@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="file:///Users/rolle/Projects/keynote-base/code.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #1B0B38; }
+  :root { --mono: "Geist Mono", ui-monospace, monospace; }
+  body { zoom: 2; }
+  pre { width: 819px; }
+</style>
+<pre style="height:172px">ssh web<span class="t-punct">-</span><span class="t-number">01</span>
+less /etc/nginx/sites<span class="t-punct">-</span>enabled/example<span class="t-punct">.</span>conf
+journalctl <span class="t-punct">-</span>u nginx <span class="t-punct">-</span><span class="t-punct">-</span>since <span class="t-string">'10 min ago'</span></pre><pre style="height:172px">sudo vim /etc/nginx/sites<span class="t-punct">-</span>enabled/example<span class="t-punct">.</span>conf
+sudo nginx <span class="t-punct">-</span>t
+sudo systemctl reload nginx</pre>
