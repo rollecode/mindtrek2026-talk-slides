@@ -1,7 +1,7 @@
 """Mindtrek 2026: Sovereign by habit.
 
 First draft, generated from the slide outline in the vault on 29.9.2026.
-Values in [brackets] are facts still to be filled in. Once the deck is handed
+Facts come from the submitted abstract, the Dude blog posts of 2017 and 2023 and the server install scripts. Once the deck is handed
 over to Keynote, the .key becomes the source of truth and this file is kept
 for reference only.
 """
@@ -14,90 +14,99 @@ DECK = [
     dict(layout="cover", head="Sovereign", em="by habit",
          standfirst=["20 years of self-hosting from source", "on European servers"]),
 
-    dict(layout="statement", head="A strategy topic,", em="told from the server room",
-         standfirst=["Europe is planning its way towards digital sovereignty.",
-                     "This talk is about what it looks like in daily work."],
-         notes="""The conference theme is Building Europe's Digital Sovereignty. Most of that conversation happens at the level of strategy and policy. This talk looks at the same thing from below: one small company, its servers, and the habits that keep them under its own control."""),
+    # Same as the WP Suomi 2026 about slide, text taken from its final export.
+    dict(layout="about", sections=[
+        ("About", "Rolle", "Founder and CTO of Digitoimisto Dude Oy. Code soon 30 years, WordPress since 2005, online since 1999. Accessibility, open source, Linux servers, and building my own tools. Free time: running, bilingual family, knows sign language."),
+        ("Dude &", "WordPress", "Contributing to WordPress and open source since we founded Dude in 2013: 71 open source repositories on GitHub, including air-light, our starter theme with over 1100 stars."),
+    ], photos=["photos/rolle-90s.jpg", "photos/dudella.jpg"]),
 
-    dict(layout="pairs", head="The layers", em="we stopped looking inside", pairs=[
-        ("Containers", "Package an application with everything it needs, so it runs the same everywhere."),
-        ("Orchestration", "Schedule and scale those containers across many machines."),
-        ("Managed platforms", "Someone else runs the servers, the database and the updates."),
-        ("Headless and SaaS", "The content, the forms or the search live in another company's service."),
-    ], notes="""Each of these solves a real problem, and I use some of them. What they have in common is that each one hides a layer that developers used to see. This talk is about what happens when you keep looking inside those layers."""),
+    dict(layout="statement", head="Sovereignty as a strategy,", em="or as a habit",
+         standfirst=["Europe's digital sovereignty has become a strategy topic,",
+                     "something organisations plan their way towards.",
+                     "This talk is about getting there by habit."],
+         notes="""The conference theme is Building Europe's Digital Sovereignty. This talk looks at it from the daily work of one small agency and its servers."""),
 
-    dict(layout="statement", head="Where the habit", em="comes from",
-         standfirst=["[1998: the first machine and filesystem I could touch.]",
-                     "About twenty years of Linux servers I can log into."],
-         notes="""Code for 30 years, my own Linux servers for about two decades. The preference for servers I can log into came first. The word for it, sovereignty, came much later."""),
+    dict(layout="pairs", head="Layers we rarely", em="look inside", pairs=[
+        ("Containers", "An image bundles the app with an operating system someone else chose."),
+        ("Orchestration", "A scheduler decides where and when the containers run."),
+        ("Managed platforms", "No shell and no filesystem. You deploy, the platform runs it."),
+        ("Serverless", "Functions run on demand in another company's runtime."),
+    ], notes="""These layers solve real problems, and I use some of them. For 20 years my preference has been different: build from source, and run things on servers I can log into, read and change."""),
 
-    dict(layout="bullets", head="2013:", em="a company on the same habit", items=[
-        "Dude starts out on partners' hosting.",
-        "Without root access, every change means waiting for someone else.",
-        "[Year]: the first servers of our own.",
-        "Since then, all of our infrastructure runs on European servers.",
-    ], notes="""Drop this slide if the talk runs long. The point is that the company inherited the habit from the people who founded it."""),
+    dict(layout="pairs", head="Where the habit", em="comes from", pairs=[
+        ("1996", "KDE at 8 years old, on the family's Red Hat based Linux."),
+        ("1998", "Mandrake Linux, dual-booted on my sister's PC."),
+        ("School", "An IRC shell account on TNNet."),
+        ("Later", "A headless server in the wardrobe, used over SSH."),
+    ], notes="""My father had an Amstrad CPC, then 386 and 486 machines. Linux was in the house early, and a server I could log into became normal long before I had a word for why it mattered. [Check: the year of the first own server, which the "20 years" in the title rests on.]"""),
+
+    dict(layout="bullets", head="Dude 2013-2015:", em="from partners to our own server", items=[
+        "2013: client sites on hosting partners' servers.",
+        "Jails, cPanel and control panels stood between us and the server.",
+        "2015: our first own VPS, to run the latest nginx.",
+        "Apache out, nginx in, for good.",
+    ], notes="""I wanted a purely command-line way of working. The first VPS ran HHVM, which kept crashing, so I wrote a cron script that restarted it. That was the start of doing operations ourselves."""),
 
     dict(layout="list", head="Choosing providers,", em="and leaving them", items=[
-        "[Year] Partners' shared hosting",
-        "[Year] The first VPS",
-        "[Year] A French provider",
-        "[Year] A Finnish datacentre",
-        "[Year] The outage",
-        "Today: a mix of European providers",
-    ], notes="""Tell the outage as a story. It is the proof that leaving a provider is possible when you know every layer of your own setup. [What happened, when, and how long the move took.]"""),
+        "2015  DigitalOcean: the first VPS",
+        "2016  OVH in France: 2 web, 2 database and 1 file server",
+        "2016  The outage: every client site hangs",
+        "2016  Every site moved to Multim in Pori in one night",
+        "2016-2026  A datacentre in a former army rock cave, on wind power",
+        "2026  Moving everything to one Finnish provider",
+    ], notes="""One Monday morning every client site hung, and nobody in France could be reached. Weeks later a report arrived: an excavator had cut the network. We moved every site to Multim in one night in October 2016. The old DigitalOcean server we kept for legacy sites is still called Monday. [Check: the 2016 blog post describes weeks of slow nights before the move; settle which version to tell.]"""),
 
     dict(layout="pairs", head="The fleet", em="today", pairs=[
-        ("[N] servers", "[What each class of server runs.]"),
-        ("15 people", "A web agency, no separate operations team."),
-        ("Our own services", "Plausible for analytics, Outline for docs, Twenty for the CRM."),
-        ("Mastodon", "mementomori.social, about 1000 users, since 2022."),
-    ], notes="""One picture of what runs where. The self-hosted applications are evidence here, not a section of their own."""),
+        ("About 30 servers", "Ubuntu 24.04 on almost all of them."),
+        ("15 people", "A web agency with no separate operations team."),
+        ("One stack per server", "nginx, PHP-FPM, MariaDB, Valkey and fail2ban on the same machine."),
+        ("Our own services", "Analytics, docs, CRM and a Mastodon instance with 1000 users."),
+    ], notes="""Deploys go from Git with Capistrano. Larger sites get a cluster with HAProxy, Galera and lsyncd. The self-hosted services are Plausible, Outline, Twenty and mementomori.social."""),
 
-    dict(layout="pairs", head="From", em="upstream", pairs=[
-        ("Built from source", "[Which software is compiled by hand.]"),
-        ("Upstream packages", "[Which software comes from the distribution or upstream packages.]"),
-        ("Configured by hand", "Every configuration file is written and read by us, with our own defaults."),
-        ("Why the line is there", "[Why some things are built and others are packaged.]"),
-    ], notes="""The title says "from source", so be exact. The distinction that holds up is upstream and unmodified software configured by hand, compared to a vendor image with somebody else's defaults already baked in. Say which packages and which builds before a question from the audience does."""),
+    dict(layout="pairs", head="From source", em="and from upstream", pairs=[
+        ("Built from source", "nginx modules for Brotli, cache purging and GeoIP, against the exact nginx that runs."),
+        ("Upstream repositories", "nginx from nginx.org, PHP from the Ondřej Surý PPA, MariaDB from MariaDB."),
+        ("Distribution packages", "Everything else comes from Ubuntu."),
+        ("Configured by hand", "Every configuration file is ours, with our own defaults."),
+    ], notes="""The title says from source, so to be exact: most software comes from upstream, and a few modules are compiled by us. What matters is unmodified upstream software, configured by hand, on a server we can read."""),
 
-    dict(layout="code", head="Working", em="on the server",
-         left_label="Find it", left_code="ssh web-01\nless /etc/nginx/sites-enabled/example.conf\njournalctl -u nginx --since '10 min ago'",
-         right_label="Fix it", right_code="sudo vim /etc/nginx/sites-enabled/example.conf\nsudo nginx -t\nsudo systemctl reload nginx",
-         takeaway="Log in, read the configuration, change the thing, test it and reload. Every step is visible, and every step can be undone.",
-         notes="""No live demo. [Replace these commands with one real sequence from our own servers.]"""),
+    dict(layout="code", head="When a layer", em="breaks",
+         left_label="Read the running build", left_code="nginx -V 2>&1 | grep configure\napt-get source nginx",
+         right_label="Build the module against it", right_code="cd nginx-*/\n./configure <same arguments> \\\n  --add-dynamic-module=../ngx_cache_purge\nmake modules",
+         takeaway="Ubuntu patched nginx for a security fix, and our modules built from plain nginx source started crashing. Building them against Ubuntu's own source, with the same configure arguments, fixed it.",
+         notes="""This is the whole talk in one incident. The crash was a segfault inside a module. Knowing how nginx and its modules are built is what found the cause."""),
 
     dict(layout="pairs", head="Automation,", em="and what stays manual", pairs=[
-        ("Automated", "[Ansible playbooks, backups, monitoring, updates.]"),
-        ("By hand", "[What we keep manual on purpose.]"),
-        ("Coming round to it", "[How Ansible entered the picture.]"),
-        ("The line between", "[How we decide which side something goes on.]"),
-    ]),
+        ("Scripts", "Bash install and maintenance scripts since 2025, now moving to Ansible."),
+        ("Every hour", "Database and file backups to a storage box, with daily and weekly snapshots."),
+        ("Monitoring", "Logs, errors and suspicious requests are watched and reported to Slack."),
+        ("By hand", "Monthly patching follows a written runbook and takes about 3 hours."),
+    ], notes="""Ansible is something I used to do only with a gun to my head. Lately I have grown fond of it."""),
 
     dict(layout="bullets", head="Where it", em="costs more", items=[
-        "Onboarding takes longer when every layer is yours.",
-        "Rebuilding a server exactly the same way needs discipline.",
-        "Knowledge collects in one person unless it is written down.",
-        "[Hours of maintenance per month, counted honestly.]",
-    ], notes="""Be honest about the costs before talking about the benefits. [Monthly server cost compared to an equivalent managed platform.]"""),
-
-    dict(layout="bullets", head="Where it", em="pays", items=[
-        "Every layer is understood, so nothing is a black box.",
-        "Problems can be read from logs and configuration files.",
-        "Moving to another provider is work, but it is possible.",
-        "[The debugging story where reading the layer solved it.]",
+        "Monthly patching takes hours, and only two people can do it.",
+        "Servers set up at different times drift apart.",
+        "Fixes are made by hand first and written into scripts afterwards.",
+        "Knowledge stays with a few people unless it is written down.",
     ]),
 
-    dict(layout="pairs", head="Where it", em="still leaks", pairs=[
-        ("DNS", "[Who runs our DNS, and what happens if they go away.]"),
-        ("CDN", "[Where static files and caching depend on another company.]"),
-        ("Email", "Deliverability depends on the large mail providers."),
-        ("AI APIs", "The models we use run on servers we do not control."),
-    ], notes="""Self-hosting does not make a company fully independent. These are the dependencies we keep, and knowing them is part of the work. This ties back to the strategy view on the second slide."""),
+    dict(layout="bullets", head="Where it", em="pays", items=[
+        "Every layer can be read, so nothing is a black box.",
+        "A crash can be traced from the log to the source.",
+        "In 2016 we moved every site to another provider in one night.",
+        "The 2026 move to one provider is planned in waves over three months.",
+    ]),
+
+    dict(layout="pairs", head="Where it still", em="depends on others", pairs=[
+        ("DNS and CDN", "Cloudflare, for DNS, caching and the Mastodon media storage."),
+        ("Email", "Mailgun sends it, and delivery depends on the large mail providers."),
+        ("Code and tools", "GitHub for code, Better Stack for uptime, Let's Encrypt for certificates."),
+        ("AI", "Log analysis uses OpenAI models, and I use Claude a lot."),
+    ], notes="""Self-hosting does not make a company independent of everyone. These are the dependencies we keep on purpose, and knowing them is part of the work."""),
 
     dict(layout="statement", head="Knowing every layer", em="is practical sovereignty",
          standfirst=["Host one thing yourself, end to end,", "and keep it running for a year."],
-         notes="""One concrete first step for the developers and students in the room."""),
+         notes="""Knowing every layer of your stack is the most practical form of digital sovereignty a developer can have. One concrete first step for the developers and students in the room."""),
 
     dict(layout="statement", head="Kiitos.", em="Questions?",
          standfirst=["Rolle Laukkarinen", "rolle.social · dude.fi · github.com/rollecode"]),
@@ -114,5 +123,5 @@ NOTES = """
 
 - Slides go to presentations@mindtrek.org as PowerPoint or PDF by Sunday 4.10
 - The talk is 20 minutes, with 5 to 10 minutes for questions
-- Fill in every [bracket] with the real value, or remove the line
+- Settle the two [Check] notes: the year of the first own server, and which outage version to tell
 """

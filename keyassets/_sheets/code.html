@@ -6,8 +6,8 @@
   body { zoom: 2; }
   pre { width: 819px; }
 </style>
-<pre style="height:172px">ssh web<span class="t-punct">-</span><span class="t-number">01</span>
-less /etc/nginx/sites<span class="t-punct">-</span>enabled/example<span class="t-punct">.</span>conf
-journalctl <span class="t-punct">-</span>u nginx <span class="t-punct">-</span><span class="t-punct">-</span>since <span class="t-string">'10 min ago'</span></pre><pre style="height:172px">sudo vim /etc/nginx/sites<span class="t-punct">-</span>enabled/example<span class="t-punct">.</span>conf
-sudo nginx <span class="t-punct">-</span>t
-sudo systemctl reload nginx</pre>
+<pre style="height:132px">nginx <span class="t-punct">-</span>V <span class="t-number">2</span><span class="t-punct">&gt;</span><span class="t-punct">&amp;</span><span class="t-number">1</span> <span class="t-punct">|</span> grep configure
+apt<span class="t-punct">-</span>get source nginx</pre><pre style="height:212px">cd nginx<span class="t-punct">-</span>*/
+<span class="t-punct">.</span>/configure <span class="t-punct">&lt;</span>same arguments<span class="t-punct">&gt;</span> \
+  <span class="t-punct">-</span><span class="t-punct">-</span>add<span class="t-punct">-</span>dynamic<span class="t-punct">-</span>module<span class="t-punct">=</span><span class="t-punct">.</span><span class="t-punct">.</span>/ngx_cache_purge
+make modules</pre>
