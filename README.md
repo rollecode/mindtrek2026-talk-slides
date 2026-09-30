@@ -15,7 +15,9 @@
 
 ---
 
-<img width="1920" height="1080" alt="Sovereign by habit cover slide" src="cover.png" />
+<a href="https://rollecode.github.io/mindtrek2026-talk-slides/"><img width="1920" height="1080" alt="Sovereign by habit cover slide" src="cover.png" /></a>
+
+<h1 align="center"><a href="https://rollecode.github.io/mindtrek2026-talk-slides/">Browse the slides</a></h1>
 
 > [!IMPORTANT]
 > These slides are a work in progress and subject to change until the talk has been given.
@@ -66,6 +68,7 @@ The tips from the talk, in a little more detail.
 | -- | -- |
 | `Sovereign by habit.key` | The deck used for presenting, and the source of truth |
 | `export/` | Exports for the organisers: `.pptx` and `.pdf` |
+| `docs/` | The slide browser on GitHub Pages, with one image per slide |
 | `keyassets/` | Logos, diagram parts and brand assets used on the slides |
 | `photos/` | Photos used on the About slide |
 | `cover.png` | The cover slide, for this README |
