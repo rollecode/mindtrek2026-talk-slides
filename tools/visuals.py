@@ -271,12 +271,14 @@ def s13():
     if font of object text of text item i is "GeistMono-Regular" then delete text item i
   end repeat
 end tell''')
-    P = [rect(108, 433, 819, 132, "#1B0B38"), rect(993, 433, 819, 212, "#1B0B38")]
+    P = [rect(108, 433, 819, 132, "#1B0B38"), rect(993, 433, 819, 252, "#1B0B38")]
     place(k, "viz-13", render("viz-13", P), [])
-    left = [[("nginx", "func"), (" ", "text"), ("-V", "key"), (" ", "text"), ("2", "num"), (">&", "punct"), ("1", "num"),
-             (" ", "text"), ("|", "punct"), (" ", "text"), ("grep", "func"), (" ", "text"), ("configure", "str")],
-            [("apt-get", "func"), (" ", "text"), ("source", "kw"), (" ", "text"), ("nginx", "str")]]
-    right = [[("cd", "kw"), (" ", "text"), ("nginx-*/", "str")],
+    left = [[("nginx", "func"), (" ", "text"), ("-v", "key")],
+            [("nginx", "func"), (" ", "text"), ("-V", "key"), (" ", "text"), ("2", "num"), (">&", "punct"), ("1", "num"),
+             (" ", "text"), ("|", "punct"), (" ", "text"), ("grep", "func"), (" ", "text"), ("configure", "str")]]
+    right = [[("curl", "func"), (" ", "text"), ("-O", "key"), (" ", "text"), ("nginx.org/download/nginx-$V.tar.gz", "str")],
+             [("tar", "func"), (" ", "text"), ("xzf", "key"), (" ", "text"), ("nginx-$V.tar.gz", "str"), (" ", "text"),
+              ("&&", "punct"), (" ", "text"), ("cd", "kw"), (" ", "text"), ("nginx-$V", "str")],
              [("./configure", "func"), (" ", "text"), ("<same arguments>", "comment"), (" ", "text"), ("\\", "punct")],
              [("  ", "text"), ("--add-dynamic-module", "key"), ("=", "punct"), ("../ngx_cache_purge", "str")],
              [("make", "func"), (" ", "text"), ("modules", "kw")]]
