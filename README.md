@@ -52,6 +52,7 @@ The tips from the talk, in a little more detail.
 | Path | What it is |
 | -- | -- |
 | `Sovereign by habit.key` | The deck used for presenting, and the source of truth |
+| `export/` | Exports for the organisers: `.pptx` and `.pdf` |
 | `keyassets/` | Logos, diagram parts and brand assets used on the slides |
 | `photos/` | Photos used on the About slide |
 | `tools/` | Helpers for editing the open deck in Keynote: diagrams, the logo wall and text |
