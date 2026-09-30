@@ -122,7 +122,7 @@ def s11():
         P.append(icon("hard-drives", xs[0] + (j % 6) * 66, 392 + (j // 6) * 66, 42))
     for j in range(14):
         P.append(icon("user", xs[1] + (j % 5) * 80, 488 + (j // 5) * 80, 50))
-    for j, name in enumerate(["nginx", "PHP-FPM", "MariaDB", "Valkey", "fail2ban"]):
+    for j, name in enumerate(["nginx", "PHP-FPM", "MariaDB", "Valkey", "Security layers"]):
         y = 390 + j * 56
         P.append(rect(xs[2], y, cw, 44, PANEL, RULE, 2))
         T.append((name, xs[2] + 16, y + 5, cw - 32, "chip"))
