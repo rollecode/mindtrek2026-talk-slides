@@ -15,7 +15,7 @@
 
 ---
 
-<h1 align="center"><a href="https://rollecode.github.io/mindtrek2026-talk-slides/">Browse the slides</a></h1>
+<a href="https://rollecode.github.io/mindtrek2026-talk-slides/"><img width="1920" height="1080" alt="Sovereign by habit cover slide" src="cover.png" /></a>
 
 > [!IMPORTANT]
 > These slides are a work in progress and subject to change until the talk has been given.
