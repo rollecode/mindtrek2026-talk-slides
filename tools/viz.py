@@ -44,9 +44,12 @@ def rect(x, y, w, h, fill=PANEL, stroke=None, sw=2, dash=None):
     return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}"{st}/>'
 
 
-def line(x1, y1, x2, y2, color=VIOLET, sw=3, dash=None, head=True):
+def line(x1, y1, x2, y2, color=VIOLET, sw=3, dash=None, head=True, both=False):
     d = f' stroke-dasharray="{dash}"' if dash else ""
     m = f' marker-end="url(#h{color[1:]})"' if head else ""
+    if both:
+        m += f' marker-start="url(#h{color[1:]})"'
+
     return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{sw}"{d}{m}/>'
 
 

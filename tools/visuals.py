@@ -250,6 +250,29 @@ def standards(k):
     place(k, f"viz-{k}", render(f"viz-{k}", P), T)
 
 
+def portability(k):
+    P, T = [], []
+    P.append(rect(104, 400, 560, 420, TINT, VIOLET, 2))
+    for j, (label, ic) in enumerate([("Open source software", "file-code"), ("Our own servers", "hard-drives"),
+                                     ("Our own data", "database"), ("Open APIs", "brackets-curly")]):
+        y = 418 + j * 100
+        P.append(rect(122, y, 524, 84, PANEL, RULE, 2))
+        P.append(icon(ic, 146, y + 18, 48))
+        T.append((label, 214, y + (84 - lh("node")) // 2, 420, "node"))
+    targets = [(470, "truck", "Another provider", "Copy the files and databases, and go."),
+               (610, "robot", "Any tool, with AI", "With a proper API, an MCP server can\u2028move data in any direction."),
+               (750, "eye-slash", "Nobody watching", "Nobody can spy on data that sits\u2028on our own servers.")]
+    for cy, ic, label, desc in targets:
+        y = cy - 58
+        P.append(rect(1140, y, 672, 116, PANEL, RULE, 2))
+        P.append(icon(ic, 1164, cy - 26, 52))
+        T.append((label, 1234, cy - 46, 560, "node"))
+        T.append((desc, 1234, cy - 8, 560, "small"))
+        priv = ic == "eye-slash"
+        P.append(line(686, 610 + (cy - 610) // 3, 1126, cy, MUTED if priv else VIOLET, 3, "8 7" if priv else None, head=not priv, both=not priv))
+    place(k, f"viz-{k}", render(f"viz-{k}", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
