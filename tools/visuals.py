@@ -210,9 +210,9 @@ def s12():
         cx, cy2 = sx + 28 + (j % 2) * 326, 484 + (j // 2) * 64
         P.append(rect(cx, cy2, 310, 52, PANEL, RULE, 2))
         T.append((chip, cx + 20, cy2 + 10, 280, "chip"))
-    P.append(rect(sx + 16, 684, sw_ - 32, 108, VIOLET))
-    T.append(("Configured by hand", sx + 44, 696, sw_ - 88, "label22w"))
-    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 44, 730, sw_ - 88, "desc20w"))
+    P.append(rect(sx + 28, 676, 636, 108, VIOLET))
+    T.append(("Configured by hand", sx + 48, 690, 600, "label22w"))
+    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 48, 724, 600, "desc20w"))
     place(k, "viz-12", render("viz-12", P), T)
 
 
