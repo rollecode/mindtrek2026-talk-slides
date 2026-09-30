@@ -52,8 +52,8 @@ def s10():
     place(k, "viz-10", render("viz-10", P), T)
 
 
-def s18():
-    k = 18
+def s17():
+    k = 17
     clear(k, "Own servers and the cloud")
     P, T = [], []
     layers = ["Code and data", "Runtime", "Operating system", "Network", "Hardware"]
@@ -80,7 +80,7 @@ def s18():
     T.append(("We are in control", 140, 884, 300, "small"))
     P.append(rect(420, 892, 24, 24, PANEL, RULE, 2))
     T.append(("The provider is in control", 456, 884, 400, "small"))
-    place(k, "viz-18", render("viz-18", P), T)
+    place(k, "viz-17", render("viz-17", P), T)
 
 
 def s11():
@@ -111,8 +111,8 @@ def s11():
     place(k, "viz-11", render("viz-11", P), T)
 
 
-def s19():
-    k = 19
+def s18():
+    k = 18
     d = n.dump(k)
     assert [x["text"] for x in d[:2]] == ["Own your data", "and know where it lives"], d[:2]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
@@ -134,11 +134,11 @@ end tell''')
         cy = 405 + j * 170
         box(P, T, 1552, cy - 44, 260, 88, ic, label)
         P.append(path(f"M{hx + hw + 12},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1538,{cy}", VIOLET, 3))
-    place(k, "viz-19", render("viz-19", P), T)
+    place(k, "viz-18", render("viz-18", P), T)
 
 
-def s20():
-    k = 20
+def s19():
+    k = 19
     clear(k, "Move anywhere, any time")
     P, T = [], []
     P.append(rect(104, 404, 560, 412, TINT, VIOLET, 2))
@@ -186,8 +186,8 @@ def s12():
     place(k, "viz-12", render("viz-12", P), T)
 
 
-def s15():
-    k = 15
+def s14():
+    k = 14
     clear(k, "Self-hosting needs standards too")
     P, T = [], []
     bh = 108
@@ -256,8 +256,8 @@ end tell''')
     code_lines(k, 1023, 452, right)
     n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
-def s23():
-    k = 23
+def s22():
+    k = 22
     clear(k, "Where to start")
     P, T = [], []
     cols = [(104, "Start here", "Students and beginners", [
@@ -279,7 +279,7 @@ def s23():
             T.append((str(num), x + 56, cy - lh("label22w") // 2 - 2, 40, "label22w"))
             T.append((tip, x + 112, cy - (32 if "\u2028" in tip else 17), 700, "tip"))
             num += 1
-    place(k, "viz-23", render("viz-23", P), T)
+    place(k, "viz-22", render("viz-22", P), T)
 
 
 if __name__ == "__main__":
