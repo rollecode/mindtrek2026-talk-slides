@@ -32,7 +32,7 @@ The tips from the talk, in a little more detail.
 **Go further**
 
 4. **Move one service you rent to your own server.** Analytics, docs or a status page are good first candidates.
-5. **Build one thing from source that you now install as a package,** and learn its build options.
+5. **Swap one installed package for a source build,** and learn its build options.
 6. **Test your exit.** Restore a backup, and move one service to another provider. If that takes weeks, you are locked in.
 
 ## Reading

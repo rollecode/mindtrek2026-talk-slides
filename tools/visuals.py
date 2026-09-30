@@ -103,7 +103,7 @@ def s11():
         box(P, T, xs[3], 390 + j * 112, cw, 92, ic, name, fill=TINT, stroke=VIOLET)
     cells = [("Dozens of clusters", "Self hosted Linux and virtualization."),
              ("14 people", "A web agency with its own sysop team."),
-             ("Only what is needed", "Each server is set up for its sites, with nothing extra installed."),
+             ("Built for purpose", "Each server is set up for its use, with nothing extra installed."),
              ("Own your services", "Analytics, docs, CRM, and other software run on our own servers.")]
     for x, (label, body) in zip(xs, cells):
         T.append((label, x, 758, cw, "year"))
@@ -167,7 +167,7 @@ def s12():
             (750, "package", "Distribution packages", "Everything else comes from\u2028the distribution.", 2)]
     for cy, ic, label, desc, nl in rows:
         box(P, T, 104, cy - bh // 2, 500, bh, ic, label, desc, nl, **kw)
-    box(P, T, 680, 450 - bh // 2, 340, bh, "wrench", "Built here", "Against the exact\u2028nginx that runs.", 2,
+    box(P, T, 680, 450 - bh // 2, 340, bh, "wrench", "Built here", "Against the running\u2028nginx version.", 2,
         fill=TINT, stroke=VIOLET, **kw)
     P.append(line(618, 450, 666, 450))
     P.append(line(1034, 450, sx - 14, 450))
@@ -266,7 +266,7 @@ def s22():
                 "Write every step down. Next month it is your script."]),
             (976, "Go further", "Seniors and companies", [
                 "Move one service you rent to your own server:\u2028analytics, docs or a status page.",
-                "Build one thing from source that you now install as a package.",
+                "Swap one installed package for a source build.",
                 "Test your exit. Restore a backup and move\u2028one service to another provider."])]
     num = 1
     for x, title, sub, tips in cols:
