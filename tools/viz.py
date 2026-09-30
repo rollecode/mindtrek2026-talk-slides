@@ -22,6 +22,8 @@ STYLES = {
     "node": ("Geist-SemiBold", 26, _rgb(INK)),
     "nodew": ("Geist-SemiBold", 25, _rgb("#FFFFFF")),
     "nodep": ("Geist-SemiBold", 25, _rgb(INK)),
+    "chip": ("Geist-SemiBold", 22, _rgb(INK)),
+    "chipw": ("Geist-SemiBold", 22, _rgb("#FFFFFF")),
     "smallw": ("Geist-Regular", 22, _rgb("#FFFFFF")),
     "body": ("Geist-Regular", 28, _rgb(BODY)),
     "small": ("Geist-Regular", 22, _rgb(BODY)),

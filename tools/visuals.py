@@ -125,13 +125,13 @@ def s11():
     for j, name in enumerate(["nginx", "PHP-FPM", "MariaDB", "Valkey", "fail2ban"]):
         y = 390 + j * 56
         P.append(rect(xs[2], y, cw, 44, PANEL, RULE, 2))
-        T.append((name, xs[2] + 24, y + (44 - lh("nodep")) // 2 - 2, cw - 48, "nodep"))
+        T.append((name, xs[2] + 16, y + 5, cw - 32, "chip"))
     P.append(rect(xs[2], 674, cw, 44, VIOLET))
-    T.append(("Ubuntu", xs[2] + 24, 674 + (44 - lh("nodew")) // 2 - 2, cw - 48, "nodew"))
+    T.append(("Linux", xs[2] + 16, 679, cw - 32, "chipw"))
     for j, (name, ic) in enumerate([("Analytics", "chart-line"), ("Docs", "files"), ("CRM", "address-book")]):
         box(P, T, xs[3], 390 + j * 112, cw, 92, ic, name, fill=TINT, stroke=VIOLET)
     cells = [("About 30 servers", "Ubuntu on almost all of them."),
-             ("14 people", "A web agency with no separate operations team."),
+             ("14 people", "A web agency with its own sysop team."),
              ("One stack per server", "All on the same machine."),
              ("Own your services", "Analytics, docs and CRM run on our own servers.")]
     for x, (label, body) in zip(xs, cells):
