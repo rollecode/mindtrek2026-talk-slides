@@ -1,11 +1,13 @@
 import json, random, newsection as n, os, math
 exec(open('logos.py').read())
 sizes=json.load(open('sizes.json')); kinds=json.load(open('kinds.json'))
+# The approved order was picked with the text-only Skynet; keep it.
+LAYOUT=dict(sizes, skynet=[182.0, 54.0])
 LEFT,RIGHT,TOP,BOTTOM=104,1812,104,904
 best=None
 for ROWS,AREA,HMAX,SN in ((12,3600,36,0.40),(12,3900,38,0.42),(11,4200,40,0.44)):
   def dims(nm, AREA=AREA, HMAX=HMAX, SN=SN):
-      w,h=sizes[nm]
+      w,h=LAYOUT[nm]
       s=SN if kinds[nm]=='named' else min(HMAX/h, math.sqrt(AREA/(w*h)), 240/w)
       return round(w*s), round(h*s)
   for seed in range(300):
@@ -18,8 +20,10 @@ for ROWS,AREA,HMAX,SN in ((12,3600,36,0.40),(12,3900,38,0.42),(11,4200,40,0.44))
     gaps=[(RIGHT-LEFT-sum(d[x][0] for x in r))/(len(r)-1) for r in rows]
     if not all(any(L[x][1]!='dim' for x in r) for r in rows) or min(gaps)<30: continue
     sc=min(gaps)-0.3*(max(gaps)-min(gaps))
-    if best is None or sc>best[0]: best=(sc,rows,d)
-sc,rows,d=best
+    if best is None or sc>best[0]: best=(sc,rows,d,SN)
+sc,rows,d,_=best
+for nm in d:
+    w,h=sizes[nm]; s_=best[3] if kinds[nm]=='named' else d[nm][0]/LAYOUT[nm][0]; d[nm]=(round(w*s_),round(h*s_))
 Hrow=max(h for (w,h) in d.values()); step=(BOTTOM-TOP-Hrow)/(len(rows)-1); A=os.path.abspath('../keyassets/logos'); D=n.q(n.DOC)
 def build(slide, state):
     lines=[]
