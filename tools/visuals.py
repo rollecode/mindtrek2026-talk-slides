@@ -23,14 +23,13 @@ def s9():
     clear(k, "From partners to our own server")
     P, T = [], []
     T += [("2013", 104, 462, 110, "year"), ("Client sites on hosting partners' servers.", 214, 462, 1200, "body")]
-    chain(520, [("Us", "users", None, False), ("Control panel", "sliders-horizontal", None, False),
+    chain(520, [("Agency", "users", None, False), ("Control panel", "sliders-horizontal", None, False),
                 ("Jail", "lock", None, False), ("Their server", "hard-drives", "Apache", False)], parts=P, texts=T)
     P.append(path("M540,646 v14 H1292 v-14", MUTED, 2, head=False))
     T.append(("Jails and control panels stood between us and the server.", 540, 668, 760, "muted"))
     T += [("2015", 104, 744, 110, "year"), ("Our first own VPS, to run the latest nginx and HHVM-FastCGI.", 214, 744, 1400, "body")]
-    chain(802, [("Us", "users", None, False), ("SSH", "terminal-window", None, False),
+    chain(802, [("Agency", "users", None, False), ("SSH", "terminal-window", None, False),
                 ("Our own VPS", "hard-drives", "nginx", True)], parts=P, texts=T)
-    T.append(("Apache out,\u2028nginx in, for good.", 1412, 826, 400, "body"))
     place(k, "viz-9", render("viz-9", P), T)
 
 
@@ -71,8 +70,8 @@ def s11():
     mx, mw, bh = 470, 760, 86
     # Us
     P.append(rect(104, 407, 240, 486, PANEL, RULE))
-    P.append(icon("users", 132, 624, 52))
-    T.append(("Us", 200, 650 - lh("node") // 2, 120, "node"))
+    P.append(icon("user", 132, 624, 52))
+    T.append(("Admin", 200, 650 - lh("node") // 2, 130, "node"))
     # Server
     P.append(rect(1320, 400, 492, 500, TINT, VIOLET))
     for name, y0, y1 in (("Sites", 410, 490), ("Operating system", 510, 690), ("Disks", 710, 790), ("Hardware", 810, 890)):
