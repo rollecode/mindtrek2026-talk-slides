@@ -1,4 +1,4 @@
-<h1 align="center">🗄️ Sovereign by habit</h1>
+<h1 align="center">🗄️ Sovereign by habit <a href="https://rollecode.github.io/mindtrek2026-talk-slides">&rarr; slides in your browser</a></h1>
 
 <p align="center">
   <strong>20 years of self-hosting from source on European servers. A talk for Mindtrek 2026.</strong>
@@ -14,8 +14,6 @@
 </p>
 
 ---
-
-<a href="https://rollecode.github.io/mindtrek2026-talk-slides/"><img width="1920" height="1080" alt="Sovereign by habit cover slide" src="cover.png" /></a>
 
 <h1 align="center"><a href="https://rollecode.github.io/mindtrek2026-talk-slides/">Browse the slides</a></h1>
 
