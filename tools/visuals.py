@@ -133,7 +133,7 @@ def s11():
     cells = [("Dozens of clusters", "Self hosted Linux and virtualization."),
              ("14 people", "A web agency with its own sysop team."),
              ("One stack per server", "All on the same machine."),
-             ("Own your services", "Analytics, docs and CRM run on our own servers.")]
+             ("Own your services", "Analytics, docs, CRM, and other software run on our own servers.")]
     for x, (label, body) in zip(xs, cells):
         T.append((label, x, 758, cw, "year"))
         T.append((body, x, 802, cw - 20, "small"))
