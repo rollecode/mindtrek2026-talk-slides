@@ -157,6 +157,36 @@ def s13():
     place(k, "viz-13", render("viz-13", P), T)
 
 
+def s14():
+    k = 14
+    d = n.dump(k)
+    assert [x["text"] for x in d[:2]] == ["Own your data", "and know where it lives"], d[:2]
+    n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
+  repeat with i from (count of images) to 1 by -1
+    if file name of image i starts with "viz-" then delete image i
+  end repeat
+  repeat with i from (count of text items) to 1 by -1
+    if (object text of text item i as text) is in {{"Our data", "Read it", "Back it up", "Move it"}} then delete text item i
+  end repeat
+  set t to text item 3
+  set p to position of t
+  set width of t to 820
+  set position of t to p
+end tell''')
+    P, T = [], []
+    hx, hy, hw, hh = 1190, 500, 240, 150
+    P.append(rect(hx, hy, hw, hh, VIOLET))
+    P.append(icon("database", hx + 22, hy + (hh - 56) // 2, 56, PANEL))
+    T.append(("Our data", hx + 90, hy + (hh - lh("nodew")) // 2 - 4, hw - 110, "nodew"))
+    for j, (label, ic) in enumerate([("Read it", "eye"), ("Back it up", "archive"), ("Move it", "arrow-square-out")]):
+        cy = 395 + j * 180
+        P.append(rect(1552, cy - 50, 260, 100, PANEL, RULE, 2))
+        P.append(icon(ic, 1574, cy - 26, 52))
+        T.append((label, 1642, cy - lh("node") // 2, 170, "node"))
+        P.append(path(f"M{hx + hw + 10},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1540,{cy}", VIOLET, 3))
+    place(k, "viz-14", render("viz-14", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
