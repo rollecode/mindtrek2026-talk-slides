@@ -1,4 +1,4 @@
-"""Diagram versions of Mindtrek slides 9-16 and 23. Run: uv run --with pillow python visuals.py 9 10"""
+"""Diagram versions of Mindtrek slides 9-12, 14, 16 and 19-21. Run: uv run --with pillow python visuals.py 9 10"""
 import sys
 from viz import *
 
@@ -51,8 +51,8 @@ def s10():
     place(k, "viz-10", render("viz-10", P), T)
 
 
-def s11():
-    k = 11
+def s14():
+    k = 14
     clear(k, "When SSH does not answer")
     P, T = [], []
     rows = [("Monitoring", "heartbeat", "Our checks tell us before a client does.", 450, "back"),
@@ -78,11 +78,11 @@ def s11():
         else:
             P.append(line(356, cy, mx - 14, cy, col, 3, dash))
             P.append(line(mx + mw + 12, cy, 1318, cy, col, 3, dash))
-    place(k, "viz-11", render("viz-11", P), T)
+    place(k, "viz-14", render("viz-14", P), T)
 
 
-def s12():
-    k = 12
+def s19():
+    k = 19
     clear(k, "Own servers and the cloud")
     P, T = [], []
     layers = ["Code and data", "Runtime", "Operating system", "Network", "Hardware"]
@@ -109,11 +109,11 @@ def s12():
     T.append(("We are in control", 140, 884, 300, "small"))
     P.append(rect(420, 892, 24, 24, PANEL, RULE, 2))
     T.append(("The provider is in control", 456, 884, 400, "small"))
-    place(k, "viz-12", render("viz-12", P), T)
+    place(k, "viz-19", render("viz-19", P), T)
 
 
-def s13():
-    k = 13
+def s11():
+    k = 11
     clear(k, "The fleet today")
     P, T = [], []
     cw, g = 400, 36
@@ -137,11 +137,11 @@ def s13():
     for x, (label, body) in zip(xs, cells):
         T.append((label, x, 758, cw, "year"))
         T.append((body, x, 802, cw - 20, "small"))
-    place(k, "viz-13", render("viz-13", P), T)
+    place(k, "viz-11", render("viz-11", P), T)
 
 
-def s14():
-    k = 14
+def s20():
+    k = 20
     d = n.dump(k)
     assert [x["text"] for x in d[:2]] == ["Own your data", "and know where it lives"], d[:2]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
@@ -163,11 +163,11 @@ end tell''')
         cy = 405 + j * 170
         box(P, T, 1552, cy - 44, 260, 88, ic, label)
         P.append(path(f"M{hx + hw + 12},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1538,{cy}", VIOLET, 3))
-    place(k, "viz-14", render("viz-14", P), T)
+    place(k, "viz-20", render("viz-20", P), T)
 
 
-def s15():
-    k = 15
+def s21():
+    k = 21
     clear(k, "Move anywhere, any time")
     P, T = [], []
     P.append(rect(104, 404, 560, 412, TINT, VIOLET, 2))
@@ -185,8 +185,8 @@ def s15():
     place(k, f"viz-{k}", render(f"viz-{k}", P), T)
 
 
-def s16():
-    k = 16
+def s12():
+    k = 12
     clear(k, "From source and from upstream")
     P, T = [], []
     bh, sx, sw_ = 108, 1120, 692
@@ -211,11 +211,11 @@ def s16():
     P.append(rect(sx + 16, 648, sw_ - 32, 136, VIOLET))
     T.append(("Configured by hand", sx + 44, 666, sw_ - 88, "nodew"))
     T.append(("Every configuration file is ours, with our own defaults.", sx + 44, 706, sw_ - 88, "smallw"))
-    place(k, "viz-16", render("viz-16", P), T)
+    place(k, "viz-12", render("viz-12", P), T)
 
 
-def s23():
-    k = 23
+def s16():
+    k = 16
     clear(k, "Self-hosting needs standards too")
     P, T = [], []
     bh = 108
