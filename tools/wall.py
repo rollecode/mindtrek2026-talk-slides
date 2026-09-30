@@ -48,6 +48,6 @@ end tell''')
     # Small batches: one call with ~100 images crashed Keynote.
     for i in range(0, len(lines), 12):
         n.osa(f'tell application "Keynote" to tell slide {slide} of document {D}\n'+"\n".join(lines[i:i+12])+'\nend tell')
-assert n.dump(8)[0]["text"]=="I want to see" and n.dump(6)[0]["text"]=="Sovereign by habit"
-build(6, lambda nm: "color"); build(7, lambda nm: {"lit":"color","half":"half","dim":"dim"}[L[nm][1]])
+assert n.dump(9)[0]["text"]=="I want to see" and n.dump(7)[0]["text"]=="Sovereign by habit"
+build(7, lambda nm: "color"); build(8, lambda nm: {"lit":"color","half":"half","dim":"dim"}[L[nm][1]])
 n.osa(f'tell application "Keynote" to save document {D}'); print('placed', [len(r) for r in rows])
