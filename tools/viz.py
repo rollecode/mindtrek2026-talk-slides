@@ -26,6 +26,7 @@ STYLES = {
     "label22w": ("Geist-SemiBold", 22, _rgb("#FFFFFF")),
     "desc20": ("Geist-Regular", 20, _rgb(BODY)),
     "desc20w": ("Geist-Regular", 20, _rgb("#FFFFFF")),
+    "tip": ("Geist-Regular", 24, _rgb(BODY)),
     "chip": ("Geist-SemiBold", 22, _rgb(INK)),
     "chipw": ("Geist-SemiBold", 22, _rgb("#FFFFFF")),
     "smallw": ("Geist-Regular", 22, _rgb("#FFFFFF")),

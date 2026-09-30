@@ -286,6 +286,31 @@ end tell''')
     code_lines(k, 1023, 452, right)
     n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
+def s24():
+    k = 24
+    clear(k, "Where to start")
+    P, T = [], []
+    cols = [(104, "Start here", "Students and beginners", [
+                "Start on your own computer. Run one service, like\u2028a local AI model, and read its config files.",
+                "Rent the smallest server and set it up by hand:\u2028SSH keys, firewall, nginx and TLS.",
+                "Write every step down. Next month it is your script."]),
+            (976, "Go further", "Seniors and companies", [
+                "Move one service you rent to your own server:\u2028analytics, docs or a status page.",
+                "Build one thing from source that you now install as a package.",
+                "Test your exit. Restore a backup and move\u2028one service to another provider."])]
+    num = 1
+    for x, title, sub, tips in cols:
+        P.append(rect(x, 384, 836, 500, TINT, VIOLET, 2))
+        T.append((title, x + 40, 408, 600, "label"))
+        T.append((sub, x + 40, 456, 600, "muted"))
+        for j, tip in enumerate(tips):
+            cy = 566 + j * 118
+            P.append(circle(x + 64, cy, 24, VIOLET))
+            T.append((str(num), x + 56, cy - lh("label22w") // 2 - 2, 40, "label22w"))
+            T.append((tip, x + 112, cy - (32 if "\u2028" in tip else 17), 700, "tip"))
+            num += 1
+    place(k, "viz-24", render("viz-24", P), T)
+
 
 if __name__ == "__main__":
     for a in sys.argv[1:]:
