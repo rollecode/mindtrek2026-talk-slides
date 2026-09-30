@@ -181,7 +181,7 @@ def s12():
         P.append(rect(cx, cy2, 310, 52, PANEL, RULE, 2))
         T.append((chip, cx + 20, cy2 + 10, 280, "chip"))
     P.append(rect(sx + 28, 684, 636, 126, VIOLET))
-    T.append(("Configured by hand", sx + 48, 702, 600, "label22w"))
+    T.append(("Our own configuration", sx + 48, 702, 600, "label22w"))
     T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 48, 736, 600, "desc20w"))
     place(k, "viz-12", render("viz-12", P), T)
 
@@ -262,7 +262,7 @@ def s22():
     P, T = [], []
     cols = [(104, "Start here", "Students and beginners", [
                 "Start on your own computer. Run one service, like\u2028a local AI model, and read its config files.",
-                "Rent the smallest server and set it up by hand:\u2028SSH keys, firewall, nginx and TLS.",
+                "Rent the smallest server and set it up yourself:\u2028SSH keys, firewall, nginx and TLS.",
                 "Write every step down. Next month it is your script."]),
             (976, "Go further", "Seniors and companies", [
                 "Move one service you rent to your own server:\u2028analytics, docs or a status page.",
