@@ -35,6 +35,6 @@ def build(slide, state):
     if fn does not start with "prog" and fn does not start with "bg" then delete image i
   end repeat
 '''+"\n".join(lines)+'\nend tell')
-assert n.dump(6)[0]["text"]=="I have never hosted anything" and n.dump(4)[0]["text"]=="Sovereign by habit"
-build(4, lambda nm: "color"); build(5, lambda nm: {"lit":"color","half":"half","dim":"dim"}[L[nm][1]])
+assert n.dump(8)[0]["text"]=="I want to see" and n.dump(6)[0]["text"]=="Sovereign by habit"
+build(6, lambda nm: "color"); build(7, lambda nm: {"lit":"color","half":"half","dim":"dim"}[L[nm][1]])
 n.osa(f'tell application "Keynote" to save document {D}'); print('placed', [len(r) for r in rows])
