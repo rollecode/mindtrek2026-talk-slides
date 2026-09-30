@@ -19,8 +19,8 @@ def s9():
     T += [("2013", 104, 466, 110, "year"), ("Client sites on hosting partners' servers.", 206, 466, 1200, "body")]
     chain(P, T, 522, [("Agency", "users", None, False), ("Control panel", "sliders-horizontal", None, False),
                       ("Jail", "lock", None, False), ("Their server", "hard-drives", "Apache", False)])
-    P.append(path("M540,646 v14 H1292 v-14", MUTED, 2, head=False))
-    T.append(("Jails and control panels stood between us and the server.", 540, 670, 760, "muted"))
+    P.append(path("M568,642 v14 H1348 v-14", MUTED, 2, head=False))
+    T.append(("Jails and control panels stood between us and the server.", 568, 666, 780, "muted"))
     T += [("2015", 104, 748, 110, "year"), ("Our first own VPS, to run the latest nginx and HHVM-FastCGI.", 206, 748, 1400, "body")]
     chain(P, T, 804, [("Agency", "users", None, False), ("SSH", "terminal-window", None, False),
                       ("Our own VPS", "hard-drives", "nginx", True)])
