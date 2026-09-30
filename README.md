@@ -55,7 +55,8 @@ The tips from the talk, in a little more detail.
 | `keyassets/` | Logos, diagram parts and brand assets used on the slides |
 | `photos/` | Photos used on the About slide |
 | `tools/` | Helpers for editing the open deck in Keynote: diagrams, the logo wall and text |
-| `talk.py` | The source of the first version of the deck, kept for reference |
+| `talk.py` | Talk length settings used by the timing bar script |
+| `minutes.json` | Estimated minutes per slide, used by the footer timing bars |
 
 ## Working on the deck
 
