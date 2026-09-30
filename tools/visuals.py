@@ -133,7 +133,8 @@ end tell''')
     for j, (label, ic) in enumerate([("Read it", "eye"), ("Back it up", "archive"), ("Move it", "arrow-square-out")]):
         cy = 405 + j * 170
         box(P, T, 1552, cy - 44, 260, 88, ic, label)
-        P.append(path(f"M{hx + hw + 12},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1538,{cy}", VIOLET, 3))
+        x0, y0 = hx + hw + 12, hy + hh // 2
+        P.append(path(f"M{x0},{y0} C{x0 + 50},{y0} {x0 + 40},{cy} {x0 + 80},{cy} L1538,{cy}", VIOLET, 3))
     place(k, "viz-18", render("viz-18", P), T)
 
 
