@@ -132,7 +132,7 @@ def s11():
         box(P, T, xs[3], 390 + j * 112, cw, 92, ic, name, fill=TINT, stroke=VIOLET)
     cells = [("Dozens of clusters", "Self hosted Linux and virtualization."),
              ("14 people", "A web agency with its own sysop team."),
-             ("One stack per server", "All on the same machine."),
+             ("Simple by default", "One server runs the whole stack for a site. Bigger sites get a cluster."),
              ("Own your services", "Analytics, docs, CRM, and other software run on our own servers.")]
     for x, (label, body) in zip(xs, cells):
         T.append((label, x, 758, cw, "year"))
