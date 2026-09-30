@@ -20,6 +20,8 @@ STYLES = {
     "big": ("Unbounded-Regular_ExtraBold", 96, _rgb(INK)),
     "year": ("Unbounded-Regular_SemiBold", 30, _rgb(VIOLET)),
     "node": ("Geist-SemiBold", 30, _rgb(INK)),
+    "nodew": ("Geist-SemiBold", 28, _rgb("#FFFFFF")),
+    "nodep": ("Geist-SemiBold", 28, _rgb(INK)),
     "body": ("Geist-Regular", 30, _rgb(BODY)),
     "small": ("Geist-Regular", 25, _rgb(BODY)),
     "muted": ("Geist-Regular", 25, _rgb(MUTED)),

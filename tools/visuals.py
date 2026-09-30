@@ -95,6 +95,37 @@ def s11():
     place(k, "viz-11", render("viz-11", P), T)
 
 
+def s12():
+    k = 12
+    clear(k, "Own servers and the cloud")
+    P, T = [], []
+    layers = ["Code and data", "Runtime", "Operating system", "Network", "Hardware"]
+    cols = [(104, "Own servers", 3,
+             "We can open every layer, and moving to another provider means copying files and databases.",
+             "We patch, monitor and fix everything ourselves, also at night."),
+            (1008, "Cloud", 1,
+             "The provider handles hardware failures, failover and scaling.",
+             "When the platform breaks, we wait. An American company's EU region still falls under US law.")]
+    sw, lh_, gap, top = 396, 74, 8, 452
+    for x, title, ours, pro, con in cols:
+        T.append((title, x, 388, 500, "label"))
+        for j, name in enumerate(layers):
+            y = top + j * (lh_ + gap)
+            mine = j < ours
+            P.append(rect(x, y, sw, lh_, VIOLET if mine else PANEL, None if mine else RULE, 2))
+            T.append((name, x + 26, y + (lh_ - lh("nodew")) // 2 - 5, sw - 40, "nodew" if mine else "nodep"))
+        tx = x + sw + 40
+        P.append(icon("plus-circle", tx, top + 2, 40, VIOLET))
+        T.append((pro, tx + 54, top, 318, "small"))
+        P.append(icon("minus-circle", tx, top + 212, 40, INK))
+        T.append((con, tx + 54, top + 210, 318, "small"))
+    P.append(rect(104, 887, 26, 26, VIOLET))
+    T.append(("We are in control", 142, 878, 300, "small"))
+    P.append(rect(420, 887, 26, 26, PANEL, RULE, 2))
+    T.append(("The provider is in control", 458, 878, 400, "small"))
+    place(k, "viz-12", render("viz-12", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
