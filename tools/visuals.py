@@ -1,6 +1,7 @@
 """Diagram versions of Mindtrek slides 9-12, 14, 16 and 19-21. Run: uv run --with pillow python visuals.py 9 10"""
 import sys
 from viz import *
+from viz import _rgb
 
 
 def chain(P, T, y, nodes, x0=104, w=316, gap=148, h=104):
@@ -231,6 +232,57 @@ def s16():
     box(P, T, 1280, 515, 532, 170, "book-open-text", "Written down", "Servers and code are both documented.", 2,
         fill=VIOLET, stroke=None, icol=PANEL, ls="nodew", ds="smallw")
     place(k, f"viz-{k}", render(f"viz-{k}", P), T)
+
+# Code palette: one clearly different colour per token kind.
+CODE = {"text": "#E4EAEC", "func": "#8FE3FF", "key": "#FF7EDB", "num": "#FFC9A3", "str": "#FFE0A3",
+        "kw": "#A2FEE5", "punct": "#B8C2C7", "comment": "#A9B4BA"}
+
+
+def code_lines(k, x, y, lines, size=26, step=40):
+    """Each line is its own editable text item in Geist Mono; tokens are (text, kind)."""
+    D = n.q(n.DOC)
+    for j, toks in enumerate(lines):
+        full = "".join(t for t, _ in toks)
+        cmds = [f'''set t to make new text item with properties {{object text:{n.q(full)}, position:{{{x}, {y + j * step}}}, width:{len(full) * 16 + 40}}}
+  tell object text of t
+    set its font to "GeistMono-Regular"
+    set its size to {size}
+    set its color to {_rgb(CODE["text"])}
+  end tell''']
+        pos = 1
+        for t, kind in toks:
+            if t.strip() and kind != "text":
+                cmds.append(f'set color of characters {pos} thru {pos + len(t) - 1} of object text of t to {_rgb(CODE[kind])}')
+            pos += len(t)
+        cmds.append(f"set position of t to {{{x}, {y + j * step}}}")
+        n.osa(f'tell application "Keynote" to tell slide {k} of document {D}\n  ' + "\n  ".join(cmds) + "\nend tell")
+
+
+def s13():
+    k = 13
+    d = n.dump(k)
+    assert d[0]["text"] == "When a layer breaks", d[0]["text"]
+    n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
+  repeat with i from (count of images) to 1 by -1
+    set fn to file name of image i
+    if fn starts with "code-" or fn starts with "viz-13" then delete image i
+  end repeat
+  repeat with i from (count of text items) to 1 by -1
+    if font of object text of text item i is "GeistMono-Regular" then delete text item i
+  end repeat
+end tell''')
+    P = [rect(108, 433, 819, 132, "#1B0B38"), rect(993, 433, 819, 212, "#1B0B38")]
+    place(k, "viz-13", render("viz-13", P), [])
+    left = [[("nginx", "func"), (" ", "text"), ("-V", "key"), (" ", "text"), ("2", "num"), (">&", "punct"), ("1", "num"),
+             (" ", "text"), ("|", "punct"), (" ", "text"), ("grep", "func"), (" ", "text"), ("configure", "str")],
+            [("apt-get", "func"), (" ", "text"), ("source", "kw"), (" ", "text"), ("nginx", "str")]]
+    right = [[("cd", "kw"), (" ", "text"), ("nginx-*/", "str")],
+             [("./configure", "func"), (" ", "text"), ("<same arguments>", "comment"), (" ", "text"), ("\\", "punct")],
+             [("  ", "text"), ("--add-dynamic-module", "key"), ("=", "punct"), ("../ngx_cache_purge", "str")],
+             [("make", "func"), (" ", "text"), ("modules", "kw")]]
+    code_lines(k, 138, 452, left)
+    code_lines(k, 1023, 452, right)
+    n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
 
 if __name__ == "__main__":
