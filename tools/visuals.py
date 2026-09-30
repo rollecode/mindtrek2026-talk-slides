@@ -189,28 +189,29 @@ def s12():
     k = 12
     clear(k, "From source and from upstream")
     P, T = [], []
-    bh, sx, sw_ = 108, 1120, 692
-    rows = [(460, "file-code", "Module source", "Brotli, cache purging and GeoIP.", 1),
-            (600, "download-simple", "Upstream repositories", "nginx.org, the Ondřej Surý PPA and MariaDB.", 2),
-            (740, "package", "Distribution packages", "Everything else comes from Ubuntu.", 2)]
+    bh, sx, sw_ = 116, 1120, 692
+    kw = dict(ls="label22", ds="desc20")
+    rows = [(450, "file-code", "Module source", "Brotli, cache purging, GeoIP\u2026", 1),
+            (600, "download-simple", "Upstream repositories", "nginx.org mainline, PPAs, MariaDB.", 1),
+            (750, "package", "Distribution packages", "Everything else comes from\u2028the distribution.", 2)]
     for cy, ic, label, desc, nl in rows:
-        box(P, T, 104, cy - bh // 2, 500, bh, ic, label, desc, nl)
-    box(P, T, 680, 460 - bh // 2, 340, bh, "wrench", "Built here", "Against the exact nginx that runs.", 2,
-        fill=TINT, stroke=VIOLET)
-    P.append(line(618, 460, 666, 460))
-    P.append(line(1034, 460, sx - 14, 460))
-    for cy in (600, 740):
+        box(P, T, 104, cy - bh // 2, 500, bh, ic, label, desc, nl, **kw)
+    box(P, T, 680, 450 - bh // 2, 340, bh, "wrench", "Built here", "Against the exact\u2028nginx that runs.", 2,
+        fill=TINT, stroke=VIOLET, **kw)
+    P.append(line(618, 450, 666, 450))
+    P.append(line(1034, 450, sx - 14, 450))
+    for cy in (600, 750):
         P.append(line(618, cy, sx - 14, cy))
-    P.append(rect(sx, 400, sw_, 400, TINT, VIOLET, 2))
-    P.append(icon("hard-drives", sx + 28, 424, 48))
-    T.append(("Our server", sx + 96, 428, 400, "node"))
-    for j, chip in enumerate(["nginx and modules", "PHP", "MariaDB", "Ubuntu packages"]):
-        cx, cy2 = sx + 28 + (j % 2) * 324, 498 + (j // 2) * 62
-        P.append(rect(cx, cy2, 308, 46, PANEL, RULE, 2))
-        T.append((chip, cx + 20, cy2 + (46 - lh("nodep")) // 2 - 2, 276, "nodep"))
-    P.append(rect(sx + 16, 648, sw_ - 32, 136, VIOLET))
-    T.append(("Configured by hand", sx + 44, 666, sw_ - 88, "nodew"))
-    T.append(("Every configuration file is ours, with our own defaults.", sx + 44, 706, sw_ - 88, "smallw"))
+    P.append(rect(sx, 392, sw_, 416, TINT, VIOLET, 2))
+    P.append(icon("hard-drives", sx + 28, 420, 44))
+    T.append(("Our server", sx + 94, 425, 400, "label22"))
+    for j, chip in enumerate(["nginx and modules", "PHP", "MariaDB", "Distribution packages"]):
+        cx, cy2 = sx + 28 + (j % 2) * 326, 488 + (j // 2) * 68
+        P.append(rect(cx, cy2, 310, 52, PANEL, RULE, 2))
+        T.append((chip, cx + 20, cy2 + 10, 280, "chip"))
+    P.append(rect(sx + 16, 648, sw_ - 32, 144, VIOLET))
+    T.append(("Configured by hand", sx + 44, 672, sw_ - 88, "label22w"))
+    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 44, 708, sw_ - 88, "desc20w"))
     place(k, "viz-12", render("viz-12", P), T)
 
 
