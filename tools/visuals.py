@@ -265,21 +265,20 @@ def s22():
                 "Start on your own computer. Run one service, like\u2028a local AI model, and read its config files.",
                 "Rent the smallest server and set it up yourself:\u2028SSH keys, firewall, nginx and TLS.",
                 "Write every step down. Next month it is your script."]),
-            (976, "Go further", "Seniors and companies", [
+            (1008, "Go further", "Seniors and companies", [
                 "Move one service you rent to your own server:\u2028analytics, docs or a status page.",
                 "Swap one installed package for a source build.",
                 "Test your exit. Restore a backup and move\u2028one service to another provider."])]
     num = 1
     for x, title, sub, tips in cols:
-        P.append(rect(x, 384, 836, 500, TINT, VIOLET, 2))
-        T.append((title, x + 40, 408, 600, "label"))
-        T.append((sub, x + 40, 456, 600, "muted"))
+        T.append((title, x, 372, 800, "colhead"))
+        T.append((sub, x, 432, 800, "colsub"))
         for j, tip in enumerate(tips):
-            cy = 566 + j * 118
-            P.append(circle(x + 64, cy, 24, VIOLET))
-            T.append((str(num), x + 56, cy - lh("label22w") // 2 - 2, 40, "label22w"))
-            T.append((tip, x + 112, cy - (32 if "\u2028" in tip else 17), 700, "tip"))
+            y = 520 + j * 124
+            T.append((str(num), x, y - 4, 60, "tipnum"))
+            T.append((tip, x + 64, y, 760, "tip30"))
             num += 1
+    P.append(line(972, 380, 972, 860, RULE, 2, head=False))
     place(k, "viz-22", render("viz-22", P), T)
 
 
