@@ -126,6 +126,37 @@ def s12():
     place(k, "viz-12", render("viz-12", P), T)
 
 
+def s13():
+    k = 13
+    clear(k, "The fleet today")
+    P, T = [], []
+    cw, g, bot = 400, 36, 720
+    xs = [104 + j * (cw + g) for j in range(4)]
+    for j in range(30):
+        P.append(icon("hard-drives", xs[0] + (j % 6) * 66, 390 + (j // 6) * 66, 46))
+    for j in range(14):
+        P.append(icon("user", xs[1] + (j % 5) * 80, 480 + (j // 5) * 80, 56))
+    for j, name in enumerate(["nginx", "PHP-FPM", "MariaDB", "Valkey", "fail2ban"]):
+        y = 390 + j * 58
+        P.append(rect(xs[2], y, cw, 52, PANEL, RULE, 2))
+        T.append((name, xs[2] + 22, y + 7, cw - 40, "nodep"))
+    P.append(rect(xs[2], 680, cw, 40, VIOLET))
+    T.append(("Ubuntu", xs[2] + 22, 681, cw - 40, "nodew"))
+    for j, (name, ic) in enumerate([("Analytics", "chart-line"), ("Docs", "files"), ("CRM", "address-book")]):
+        y = 390 + j * 114
+        P.append(rect(xs[3], y, cw, 102, TINT, VIOLET, 2))
+        P.append(icon(ic, xs[3] + 24, y + 27, 48))
+        T.append((name, xs[3] + 92, y + (102 - lh("node")) // 2, cw - 110, "node"))
+    cells = [("About 30 servers", "Ubuntu on almost all of them."),
+             ("14 people", "A web agency with no separate operations team."),
+             ("One stack per server", "All on the same machine."),
+             ("Own your services", "Analytics, docs and CRM run on our own servers.")]
+    for x, (label, body) in zip(xs, cells):
+        T.append((label, x, 752, cw, "year"))
+        T.append((body, x, 798, cw, "small"))
+    place(k, "viz-13", render("viz-13", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
