@@ -72,21 +72,35 @@ def _markers():
 
 
 def render(name, parts):
-    """Render SVG parts on a 1920x1080 transparent page at 2x; crop; return the slide box."""
+    """Write every part as its own SVG file, cropped to its measured box; return [(file, x, y, w, h)]."""
+    import json
     os.makedirs(OUT, exist_ok=True)
-    html = (f'<html><body style="margin:0;background:transparent"><svg xmlns="http://www.w3.org/2000/svg" '
-            f'width="1920" height="1080"><defs>{_markers()}</defs>{"".join(parts)}</svg></body></html>')
+    for f in os.listdir(OUT):
+        if f.startswith(name + "-") and f.endswith(".svg"):
+            os.remove(f"{OUT}/{f}")
+    defs = _markers()
+    body = "".join(f'<g id="p{j}">{p}</g>' for j, p in enumerate(parts))
+    html = (f'<html><body style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080">'
+            f'<defs>{defs}</defs>{body}</svg><pre id="out"></pre><script>'
+            f'var r=[];for(var j=0;j<{len(parts)};j++){{var b=document.getElementById("p"+j).getBoundingClientRect();'
+            f'r.push([b.left,b.top,b.width,b.height]);}}document.getElementById("out").textContent=JSON.stringify(r);'
+            f'</script></body></html>')
     with tempfile.TemporaryDirectory() as t:
-        src, shot = f"{t}/p.html", f"{t}/p.png"
+        src = f"{t}/p.html"
         open(src, "w").write(html)
-        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", f"--screenshot={shot}",
-                        "--window-size=1920,1080", "--force-device-scale-factor=2",
-                        "--default-background-color=00000000", f"file://{src}"], capture_output=True, check=True)
-        im = Image.open(shot).convert("RGBA")
-    l, t_, r, b = im.getbbox()
-    l, t_ = l // 2 * 2, t_ // 2 * 2
-    im.crop((l, t_, r, b)).save(f"{OUT}/{name}.png")
-    return l // 2, t_ // 2, (r - l + 1) // 2, (b - t_ + 1) // 2
+        dom = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--dump-dom", f"file://{src}"],
+                             capture_output=True, text=True, check=True).stdout
+    boxes = json.loads(re.search(r'<pre id="out">(.*?)</pre>', dom, re.S).group(1))
+    out = []
+    for j, (p, (bx, by, bw, bh)) in enumerate(zip(parts, boxes)):
+        pad = 12
+        x, y = int(bx) - pad, int(by) - pad
+        w, h = int(bw + (bx - int(bx))) + 2 * pad + 1, int(bh + (by - int(by))) + 2 * pad + 1
+        f = f"{OUT}/{name}-{j:02d}.svg"
+        open(f, "w").write(f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
+                           f'viewBox="{x} {y} {w} {h}"><defs>{defs}</defs>{p}</svg>')
+        out.append((f, x, y, w, h))
+    return out
 
 
 def clear(k, keep_heading):
@@ -104,12 +118,11 @@ def clear(k, keep_heading):
 end tell''')
 
 
-def place(k, name, box, texts):
-    """Put the diagram image and then its texts [(text, x, y, w, style)] on slide k."""
+def place(k, name, items, texts):
+    """Put each diagram part as its own image, then the texts [(text, x, y, w, style)], on slide k."""
     D = n.q(n.DOC)
-    x, y, w, h = box
-    lines = [f'make new image with properties {{file:(POSIX file {n.q(os.path.abspath(OUT + "/" + name + ".png"))}), '
-             f'position:{{{x}, {y}}}, width:{w}, height:{h}}}']
+    lines = [f'make new image with properties {{file:(POSIX file {n.q(os.path.abspath(f))}), '
+             f'position:{{{x}, {y}}}, width:{w}, height:{h}}}' for f, x, y, w, h in items]
     for s, tx, ty, tw, st in texts:
         f, z, c = STYLES[st]
         lines.append(f'''set t to make new text item with properties {{object text:{n.q(s)}, position:{{{tx}, {ty}}}, width:{tw}}}
