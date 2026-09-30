@@ -257,8 +257,8 @@ end tell''')
     code_lines(k, 1023, 452, right)
     n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
-def s22():
-    k = 22
+def s23():
+    k = 23
     clear(k, "Where to start")
     P, T = [], []
     cols = [(104, "Start here", "New to running servers", [
@@ -279,7 +279,27 @@ def s22():
             T.append((tip, x + 64, y, 760, "tip30"))
             num += 1
     P.append(line(972, 380, 972, 860, RULE, 2, head=False))
-    place(k, "viz-22", render("viz-22", P), T)
+    place(k, "viz-23", render("viz-23", P), T)
+
+def s21():
+    k = 21
+    clear(k, "Big tech has alternatives")
+    P, T = [], []
+    T += [("Big tech", 104, 384, 400, "colsub"), ("European or self-hosted", 620, 384, 500, "colsub"), ("The catch", 1180, 384, 600, "colsub")]
+    rows = [("Cloudflare", "Bunny.net, Slovenia", "Smaller network than Cloudflare."),
+            ("Mailgun, SendGrid", "Brevo, France", "Delivery still depends on Gmail and Outlook."),
+            ("GitHub", "Codeberg, Germany, or Forgejo", "Most open source projects still live on GitHub."),
+            ("Google Workspace", "Nextcloud, self-hosted", "Someone has to run and update it."),
+            ("OpenAI", "Mistral, France, or local models", "Local models need strong hardware.")]
+    for j, (big, alt, catch) in enumerate(rows):
+        y = 440 + j * 92
+        P.append(rect(104, y, 440, 72, PANEL, RULE, 2))
+        T.append((big, 128, y + (72 - lh("nodep")) // 2 - 2, 400, "nodep"))
+        P.append(line(556, y + 36, 606, y + 36))
+        P.append(rect(620, y, 520, 72, TINT, VIOLET, 2))
+        T.append((alt, 644, y + (72 - lh("nodep")) // 2 - 2, 480, "nodep"))
+        T.append((catch, 1180, y + (72 - lh("tip")) // 2 - 2, 640, "tip"))
+    place(k, "viz-21", render("viz-21", P), T)
 
 
 if __name__ == "__main__":
