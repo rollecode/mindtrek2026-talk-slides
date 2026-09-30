@@ -299,7 +299,13 @@ def s21():
         P.append(rect(620, y, 520, 72, TINT, VIOLET, 2))
         T.append((alt, 644, y + (72 - lh("nodep")) // 2 - 2, 480, "nodep"))
         T.append((catch, 1180, y + (72 - lh("tip")) // 2 - 2, 640, "tip"))
+    P.append(rect(1392, 214, 420, 104, PANEL, VIOLET, 2))
+    T += [("More at", 1500, 232, 300, "small"), ("european-alternatives.eu", 1500, 262, 300, "chip")]
     place(k, "viz-21", render("viz-21", P), T)
+    logo = os.path.abspath(os.path.join(HERE, "..", "keyassets", "brand", "ea-logo-no-text.svg"))
+    n.osa(f'tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)} to make new image with properties '
+          f'{{file:(POSIX file {n.q(logo)}), position:{{1410, 230}}, width:72, height:72}}')
+    n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
 
 if __name__ == "__main__":
