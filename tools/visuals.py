@@ -285,7 +285,7 @@ def s21():
     k = 21
     clear(k, "Big tech has alternatives")
     P, T = [], []
-    T += [("Big tech", 104, 384, 400, "colsub"), ("European or self-hosted", 620, 384, 500, "colsub"), ("The catch", 1180, 384, 600, "colsub")]
+    T += [("Big tech", 104, 380, 440, "year"), ("European or self-hosted", 620, 380, 520, "year"), ("The catch", 1180, 380, 600, "year")]
     rows = [("Cloudflare", "Bunny.net, Slovenia", "Smaller network than Cloudflare."),
             ("Mailgun, SendGrid", "Brevo, France", "Delivery still depends on Gmail and Outlook."),
             ("GitHub", "Codeberg, Germany, or Forgejo", "Most open source projects still live on GitHub."),
