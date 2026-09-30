@@ -27,7 +27,7 @@ STYLES = {
     "desc20": ("Geist-Regular", 20, _rgb(BODY)),
     "desc20w": ("Geist-Regular", 20, _rgb("#FFFFFF")),
     "colhead": ("Unbounded-Regular_SemiBold", 42, _rgb(VIOLET)),
-    "colsub": ("Geist-Regular", 26, _rgb(MUTED)),
+    "colsub": ("Geist-Medium", 26, _rgb("#5B4A78")),
     "tipnum": ("Unbounded-Regular_SemiBold", 34, _rgb(VIOLET)),
     "tip30": ("Geist-Regular", 30, _rgb(BODY)),
     "tip": ("Geist-Regular", 24, _rgb(BODY)),

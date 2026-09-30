@@ -261,11 +261,11 @@ def s22():
     k = 22
     clear(k, "Where to start")
     P, T = [], []
-    cols = [(104, "Start here", "Students and beginners", [
+    cols = [(104, "Start here", "New to running servers", [
                 "Start on your own computer. Run one service, like\u2028a local AI model, and read its config files.",
                 "Rent the smallest server and set it up yourself:\u2028SSH keys, firewall, nginx and TLS.",
                 "Write every step down. Next month it is your script."]),
-            (1008, "Go further", "Seniors and companies", [
+            (1008, "Go further", "Already running servers", [
                 "Move one service you rent to your own server:\u2028analytics, docs or a status page.",
                 "Swap one installed package for a source build.",
                 "Test your exit. Restore a backup and move\u2028one service to another provider."])]
@@ -275,7 +275,7 @@ def s22():
         T.append((sub, x, 432, 800, "colsub"))
         for j, tip in enumerate(tips):
             y = 520 + j * 124
-            T.append((str(num), x, y - 4, 60, "tipnum"))
+            T.append((str(num), x, y + 3, 60, "tipnum"))
             T.append((tip, x + 64, y, 760, "tip30"))
             num += 1
     P.append(line(972, 380, 972, 860, RULE, 2, head=False))
