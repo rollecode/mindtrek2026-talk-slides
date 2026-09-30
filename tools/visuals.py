@@ -223,6 +223,33 @@ def s15():
     place(k, "viz-15", render("viz-15", P), T)
 
 
+def standards(k):
+    """New slide after node_modules: self-hosting still needs standards."""
+    P, T = [], []
+    bh = 116
+
+    def box(x, w, cy, ic, label, desc, fill=PANEL, stroke=RULE, h=bh):
+        y = cy - h // 2
+        P.append(rect(x, y, w, h, fill, stroke, 2))
+        P.append(icon(ic, x + 24, cy - 26, 52))
+        T.append((label, x + 94, cy - 46, w - 110, "node"))
+        T.append((desc, x + 94, cy - 8, w - 110, "small"))
+
+    for (cy, ic, label, desc), ty in zip([(460, "file-code", "Built from source", "Where the details matter."),
+                                (600, "list-checks", "Ansible playbooks", "The same setup on every server."),
+                                (740, "cube", "Docker", "For some services, where it fits.")], (560, 600, 640)):
+        box(104, 500, cy, ic, label, desc)
+        P.append(line(616, cy, 728, ty))
+    box(740, 420, 600, "check-circle", "One standard", "Several ways to do it,\u2028each one agreed on.", TINT, VIOLET, 180)
+    P.append(line(1172, 600, 1268, 600))
+    y = 510
+    P.append(rect(1280, y, 532, 180, VIOLET))
+    P.append(icon("book-open-text", 1304, 574, 52, PANEL))
+    T.append(("Written down", 1374, 554, 420, "nodew"))
+    T.append(("Servers and code are\u2028both documented.", 1374, 592, 420, "smallw"))
+    place(k, f"viz-{k}", render(f"viz-{k}", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
