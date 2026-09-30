@@ -16,17 +16,17 @@ def _rgb(h):
     return "{" + ", ".join(str(int(h[i:i + 2], 16) * 257) for i in (1, 3, 5)) + "}"
 
 STYLES = {
-    "label": ("Unbounded-Regular_SemiBold", 34, _rgb(VIOLET)),
+    "label": ("Unbounded-Regular_SemiBold", 32, _rgb(VIOLET)),
     "big": ("Unbounded-Regular_ExtraBold", 96, _rgb(INK)),
-    "year": ("Unbounded-Regular_SemiBold", 30, _rgb(VIOLET)),
-    "node": ("Geist-SemiBold", 30, _rgb(INK)),
-    "nodew": ("Geist-SemiBold", 28, _rgb("#FFFFFF")),
-    "nodep": ("Geist-SemiBold", 28, _rgb(INK)),
-    "smallw": ("Geist-Regular", 25, _rgb("#FFFFFF")),
-    "body": ("Geist-Regular", 30, _rgb(BODY)),
-    "small": ("Geist-Regular", 25, _rgb(BODY)),
-    "muted": ("Geist-Regular", 25, _rgb(MUTED)),
-    "mono": ("GeistMono-Regular", 24, _rgb(BODY)),
+    "year": ("Unbounded-Regular_SemiBold", 28, _rgb(VIOLET)),
+    "node": ("Geist-SemiBold", 26, _rgb(INK)),
+    "nodew": ("Geist-SemiBold", 25, _rgb("#FFFFFF")),
+    "nodep": ("Geist-SemiBold", 25, _rgb(INK)),
+    "smallw": ("Geist-Regular", 22, _rgb("#FFFFFF")),
+    "body": ("Geist-Regular", 28, _rgb(BODY)),
+    "small": ("Geist-Regular", 22, _rgb(BODY)),
+    "muted": ("Geist-Regular", 22, _rgb(MUTED)),
+    "mono": ("GeistMono-Regular", 22, _rgb(BODY)),
 }
 
 
@@ -126,3 +126,17 @@ def place(k, name, box, texts):
 def lh(style):
     """Approximate Keynote line box height for a style, to centre text in shapes."""
     return round(STYLES[style][1] * 1.3)
+
+
+def box(P, T, x, y, w, h, ic, label, desc=None, lines=1, fill=PANEL, stroke=RULE, dash=None,
+        icol=VIOLET, ls="node", ds="small", isz=44):
+    """A box with an icon and a label, optionally a description, centred vertically with even padding."""
+    P.append(rect(x, y, w, h, fill, stroke, 2, dash) if stroke else rect(x, y, w, h, fill))
+    P.append(icon(ic, x + 28, y + (h - isz) // 2, isz, icol))
+    tx, tw = x + 28 + isz + 22, w - (28 + isz + 22) - 24
+    if desc:
+        top = y + (h - (lh(ls) + 4 + lines * round(STYLES[ds][1] * 1.25))) // 2 - 2
+        T.append((label, tx, top, tw, ls))
+        T.append((desc, tx, top + lh(ls) + 4, tw, ds))
+    else:
+        T.append((label, tx, y + (h - lh(ls)) // 2 - 2, tw, ls))
