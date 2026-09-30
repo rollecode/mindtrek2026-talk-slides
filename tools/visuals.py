@@ -166,7 +166,7 @@ def s14():
     if file name of image i starts with "viz-" then delete image i
   end repeat
   repeat with i from (count of text items) to 1 by -1
-    if (object text of text item i as text) is in {{"Our data", "Read it", "Back it up", "Move it"}} then delete text item i
+    if (object text of text item i as text) is in {{"Our data", "Your data", "Read it", "Back it up", "Move it"}} then delete text item i
   end repeat
   set t to text item 3
   set p to position of t
@@ -177,7 +177,7 @@ end tell''')
     hx, hy, hw, hh = 1190, 500, 240, 150
     P.append(rect(hx, hy, hw, hh, VIOLET))
     P.append(icon("database", hx + 22, hy + (hh - 56) // 2, 56, PANEL))
-    T.append(("Our data", hx + 90, hy + (hh - lh("nodew")) // 2 - 4, hw - 110, "nodew"))
+    T.append(("Your data", hx + 90, hy + (hh - lh("nodew")) // 2 - 4, 200, "nodew"))
     for j, (label, ic) in enumerate([("Read it", "eye"), ("Back it up", "archive"), ("Move it", "arrow-square-out")]):
         cy = 395 + j * 180
         P.append(rect(1552, cy - 50, 260, 100, PANEL, RULE, 2))
@@ -253,15 +253,15 @@ def standards(k):
 def portability(k):
     P, T = [], []
     P.append(rect(104, 400, 560, 420, TINT, VIOLET, 2))
-    for j, (label, ic) in enumerate([("Open source software", "file-code"), ("Our own servers", "hard-drives"),
-                                     ("Our own data", "database"), ("Open APIs", "brackets-curly")]):
+    for j, (label, ic) in enumerate([("Open source software", "file-code"), ("Your own servers", "hard-drives"),
+                                     ("Your own data", "database"), ("Open APIs", "brackets-curly")]):
         y = 418 + j * 100
         P.append(rect(122, y, 524, 84, PANEL, RULE, 2))
         P.append(icon(ic, 146, y + 18, 48))
         T.append((label, 214, y + (84 - lh("node")) // 2, 420, "node"))
     targets = [(470, "truck", "Another provider", "Copy the files and databases, and go."),
                (610, "robot", "Any tool, with AI", "With a proper API, an MCP server can\u2028move data in any direction."),
-               (750, "eye-slash", "Nobody watching", "Nobody can spy on data that sits\u2028on our own servers.")]
+               (750, "eye-slash", "Nobody watching", "Nobody can spy on data that sits\u2028on your own servers.")]
     for cy, ic, label, desc in targets:
         y = cy - 58
         P.append(rect(1140, y, 672, 116, PANEL, RULE, 2))
