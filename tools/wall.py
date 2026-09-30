@@ -22,6 +22,12 @@ for ROWS,AREA,HMAX,SN in ((12,3600,36,0.40),(12,3900,38,0.42),(11,4200,40,0.44))
     sc=min(gaps)-0.3*(max(gaps)-min(gaps))
     if best is None or sc>best[0]: best=(sc,rows,d,SN)
 sc,rows,d,_=best
+# Skynet sits where Kafka was, less visible.
+for r in rows:
+    for i,x in enumerate(r):
+        if x=='skynet': a=(r,i)
+        if x=='apachekafka': b=(r,i)
+a[0][a[1]],b[0][b[1]]='apachekafka','skynet'
 for nm in d:
     w,h=sizes[nm]; s_=best[3] if kinds[nm]=='named' else d[nm][0]/LAYOUT[nm][0]; d[nm]=(round(w*s_),round(h*s_))
 Hrow=max(h for (w,h) in d.values()); step=(BOTTOM-TOP-Hrow)/(len(rows)-1); A=os.path.abspath('../keyassets/logos'); D=n.q(n.DOC)
@@ -38,7 +44,10 @@ def build(slide, state):
     set fn to file name of image i
     if fn does not start with "prog" and fn does not start with "bg" then delete image i
   end repeat
-'''+"\n".join(lines)+'\nend tell')
+end tell''')
+    # Small batches: one call with ~100 images crashed Keynote.
+    for i in range(0, len(lines), 12):
+        n.osa(f'tell application "Keynote" to tell slide {slide} of document {D}\n'+"\n".join(lines[i:i+12])+'\nend tell')
 assert n.dump(8)[0]["text"]=="I want to see" and n.dump(6)[0]["text"]=="Sovereign by habit"
 build(6, lambda nm: "color"); build(7, lambda nm: {"lit":"color","half":"half","dim":"dim"}[L[nm][1]])
 n.osa(f'tell application "Keynote" to save document {D}'); print('placed', [len(r) for r in rows])
