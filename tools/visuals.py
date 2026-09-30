@@ -52,38 +52,8 @@ def s10():
     place(k, "viz-10", render("viz-10", P), T)
 
 
-def s14():
-    k = 14
-    clear(k, "When SSH does not answer")
-    P, T = [], []
-    rows = [("Monitoring", "heartbeat", "Our checks tell us before a client does.", 450, "back"),
-            ("SSH", "terminal-window", "The normal way in. It does not answer.", 550, "broken"),
-            ("Console", "monitor", "Screen and keyboard, even with the network down.", 650, "ok"),
-            ("Rescue mode", "lifebuoy", "Boot another system and repair the disks.", 750, "ok"),
-            ("IPMI", "power", "Power and BIOS on physical servers.", 850, "ok")]
-    mx, mw, bh = 470, 760, 78
-    box(P, T, 104, 411, 240, 478, "user", "Admin")
-    P.append(rect(1320, 400, 492, 500, TINT, VIOLET))
-    for name, y0, y1 in (("Sites", 414, 488), ("Operating system", 514, 686), ("Disks", 714, 788), ("Hardware", 814, 888)):
-        P.append(rect(1334, y0, 464, y1 - y0, PANEL, RULE))
-        T.append((name, 1362, (y0 + y1) // 2 - lh("nodep") // 2 - 2, 420, "nodep"))
-    for label, ic, desc, cy, kind in rows:
-        broken = kind == "broken"
-        dash = "10 8" if broken else None
-        col = INK if broken else VIOLET
-        box(P, T, mx, cy - bh // 2, mw, bh, "x-circle" if broken else ic, label, desc,
-            stroke=INK if broken else RULE, dash=dash, icol=col, isz=40)
-        if kind == "back":
-            P.append(line(mx - 12, cy, 358, cy, MUTED, 3, "8 7"))
-            P.append(line(1320, cy, mx + mw + 14, cy, MUTED, 3, "8 7"))
-        else:
-            P.append(line(356, cy, mx - 14, cy, col, 3, dash))
-            P.append(line(mx + mw + 12, cy, 1318, cy, col, 3, dash))
-    place(k, "viz-14", render("viz-14", P), T)
-
-
-def s19():
-    k = 19
+def s18():
+    k = 18
     clear(k, "Own servers and the cloud")
     P, T = [], []
     layers = ["Code and data", "Runtime", "Operating system", "Network", "Hardware"]
@@ -110,7 +80,7 @@ def s19():
     T.append(("We are in control", 140, 884, 300, "small"))
     P.append(rect(420, 892, 24, 24, PANEL, RULE, 2))
     T.append(("The provider is in control", 456, 884, 400, "small"))
-    place(k, "viz-19", render("viz-19", P), T)
+    place(k, "viz-18", render("viz-18", P), T)
 
 
 def s11():
@@ -141,8 +111,8 @@ def s11():
     place(k, "viz-11", render("viz-11", P), T)
 
 
-def s20():
-    k = 20
+def s19():
+    k = 19
     d = n.dump(k)
     assert [x["text"] for x in d[:2]] == ["Own your data", "and know where it lives"], d[:2]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
@@ -164,11 +134,11 @@ end tell''')
         cy = 405 + j * 170
         box(P, T, 1552, cy - 44, 260, 88, ic, label)
         P.append(path(f"M{hx + hw + 12},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1538,{cy}", VIOLET, 3))
-    place(k, "viz-20", render("viz-20", P), T)
+    place(k, "viz-19", render("viz-19", P), T)
 
 
-def s21():
-    k = 21
+def s20():
+    k = 20
     clear(k, "Move anywhere, any time")
     P, T = [], []
     P.append(rect(104, 404, 560, 412, TINT, VIOLET, 2))
@@ -216,8 +186,8 @@ def s12():
     place(k, "viz-12", render("viz-12", P), T)
 
 
-def s16():
-    k = 16
+def s15():
+    k = 15
     clear(k, "Self-hosting needs standards too")
     P, T = [], []
     bh = 108
@@ -286,8 +256,8 @@ end tell''')
     code_lines(k, 1023, 452, right)
     n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
-def s24():
-    k = 24
+def s23():
+    k = 23
     clear(k, "Where to start")
     P, T = [], []
     cols = [(104, "Start here", "Students and beginners", [
@@ -309,7 +279,7 @@ def s24():
             T.append((str(num), x + 56, cy - lh("label22w") // 2 - 2, 40, "label22w"))
             T.append((tip, x + 112, cy - (32 if "\u2028" in tip else 17), 700, "tip"))
             num += 1
-    place(k, "viz-24", render("viz-24", P), T)
+    place(k, "viz-23", render("viz-23", P), T)
 
 
 if __name__ == "__main__":
