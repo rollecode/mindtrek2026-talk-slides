@@ -187,6 +187,42 @@ end tell''')
     place(k, "viz-14", render("viz-14", P), T)
 
 
+def s15():
+    k = 15
+    clear(k, "From source and from upstream")
+    P, T = [], []
+    bh, sx, sw_ = 116, 1120, 692
+
+    def box(x, w, cy, ic, label, desc, fill=PANEL, stroke=RULE):
+        y = cy - bh // 2
+        P.append(rect(x, y, w, bh, fill, stroke, 2))
+        P.append(icon(ic, x + 24, cy - 26, 52))
+        T.append((label, x + 94, y + 12, w - 110, "node"))
+        T.append((desc, x + 94, y + 50, w - 110, "small"))
+
+    rows = [(460, "file-code", "Module source", "Brotli, cache purging and GeoIP."),
+            (600, "download-simple", "Upstream repositories", "nginx.org, the Ondřej Surý PPA\u2028and MariaDB."),
+            (740, "package", "Distribution packages", "Everything else\u2028comes from Ubuntu.")]
+    for cy, ic, label, desc in rows:
+        box(104, 500, cy, ic, label, desc)
+    box(680, 340, 460, "wrench", "Built here", "Against the exact\u2028nginx that runs.", TINT, VIOLET)
+    P.append(line(616, 460, 668, 460))
+    P.append(line(1032, 460, sx - 12, 460))
+    for cy in (600, 740):
+        P.append(line(616, cy, sx - 12, cy))
+    P.append(rect(sx, 400, sw_, 400, TINT, VIOLET, 2))
+    P.append(icon("hard-drives", sx + 28, 424, 56))
+    for j, chip in enumerate(["nginx and modules", "PHP", "MariaDB", "Ubuntu packages"]):
+        cx, cy2 = sx + 28 + (j % 2) * 324, 510 + (j // 2) * 66
+        P.append(rect(cx, cy2, 308, 52, PANEL, RULE, 2))
+        T.append((chip, cx + 18, cy2 + 7, 280, "nodep"))
+    T.append(("Our server", sx + 100, 432, 400, "node"))
+    P.append(rect(sx + 14, 660, sw_ - 28, 126, VIOLET))
+    T.append(("Configured by hand", sx + 40, 672, sw_ - 80, "nodew"))
+    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 40, 714, sw_ - 80, "smallw"))
+    place(k, "viz-15", render("viz-15", P), T)
+
+
 if __name__ == "__main__":
     for a in sys.argv[1:]:
         globals()["s" + a]()
