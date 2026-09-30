@@ -257,8 +257,8 @@ end tell''')
     code_lines(k, 1023, 452, right)
     n.osa(f'tell application "Keynote" to save document {n.q(n.DOC)}')
 
-def s23():
-    k = 23
+def s22():
+    k = 22
     clear(k, "Where to start")
     P, T = [], []
     cols = [(104, "Start here", "New to running servers", [
@@ -279,7 +279,7 @@ def s23():
             T.append((tip, x + 64, y, 760, "tip30"))
             num += 1
     P.append(line(972, 380, 972, 860, RULE, 2, head=False))
-    place(k, "viz-23", render("viz-23", P), T)
+    place(k, "viz-22", render("viz-22", P), T)
 
 def s21():
     k = 21
