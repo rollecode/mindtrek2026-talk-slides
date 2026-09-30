@@ -13,8 +13,8 @@ def chain(P, T, y, nodes, x0=104, w=316, gap=148, h=104):
             P.append(line(bx - gap + 16, y + h // 2, bx - 16, y + h // 2))
 
 
-def s10():
-    k = 10
+def s9():
+    k = 9
     clear(k, "From partners\u2028to our own server")
     P, T = [], []
     T += [("2013", 104, 466, 110, "year"), ("Client sites on hosting partners' servers.", 206, 466, 1200, "body")]
@@ -25,11 +25,11 @@ def s10():
     T += [("2015", 104, 748, 110, "year"), ("Our first own VPS, to run the latest nginx and HHVM-FastCGI.", 206, 748, 1400, "body")]
     chain(P, T, 804, [("Agency", "users", None, False), ("SSH", "terminal-window", None, False),
                       ("Our own VPS", "hard-drives", "nginx", True)])
-    place(k, "viz-10", render("viz-10", P), T)
+    place(k, "viz-9", render("viz-9", P), T)
 
 
-def s11():
-    k = 11
+def s10():
+    k = 10
     clear(k, "Choosing providers, and leaving them")
     P, T = [], []
     stops = [("2015", "cloud", "A US cloud", "The first VPS."),
@@ -49,11 +49,11 @@ def s11():
         T.append((yr, x - 4, 516, col - 20, "year"))
         T.append((label, x - 4, 660, col - 20, "node"))
         T.append((desc, x - 4, 702, col - 40, "small"))
-    place(k, "viz-11", render("viz-11", P), T)
+    place(k, "viz-10", render("viz-10", P), T)
 
 
-def s15():
-    k = 15
+def s14():
+    k = 14
     clear(k, "When SSH does not answer")
     P, T = [], []
     rows = [("Monitoring", "heartbeat", "Our checks tell us before a client does.", 450, "back"),
@@ -79,11 +79,11 @@ def s15():
         else:
             P.append(line(356, cy, mx - 14, cy, col, 3, dash))
             P.append(line(mx + mw + 12, cy, 1318, cy, col, 3, dash))
-    place(k, "viz-15", render("viz-15", P), T)
+    place(k, "viz-14", render("viz-14", P), T)
 
 
-def s20():
-    k = 20
+def s19():
+    k = 19
     clear(k, "Own servers and the cloud")
     P, T = [], []
     layers = ["Code and data", "Runtime", "Operating system", "Network", "Hardware"]
@@ -110,11 +110,11 @@ def s20():
     T.append(("We are in control", 140, 884, 300, "small"))
     P.append(rect(420, 892, 24, 24, PANEL, RULE, 2))
     T.append(("The provider is in control", 456, 884, 400, "small"))
-    place(k, "viz-20", render("viz-20", P), T)
+    place(k, "viz-19", render("viz-19", P), T)
 
 
-def s12():
-    k = 12
+def s11():
+    k = 11
     clear(k, "The fleet today")
     P, T = [], []
     cw, g = 400, 36
@@ -138,11 +138,11 @@ def s12():
     for x, (label, body) in zip(xs, cells):
         T.append((label, x, 758, cw, "year"))
         T.append((body, x, 802, cw - 20, "small"))
-    place(k, "viz-12", render("viz-12", P), T)
+    place(k, "viz-11", render("viz-11", P), T)
 
 
-def s21():
-    k = 21
+def s20():
+    k = 20
     d = n.dump(k)
     assert [x["text"] for x in d[:2]] == ["Own your data", "and know where it lives"], d[:2]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
@@ -164,11 +164,11 @@ end tell''')
         cy = 405 + j * 170
         box(P, T, 1552, cy - 44, 260, 88, ic, label)
         P.append(path(f"M{hx + hw + 12},{hy + hh // 2} C1490,{hy + hh // 2} 1490,{cy} 1538,{cy}", VIOLET, 3))
-    place(k, "viz-21", render("viz-21", P), T)
+    place(k, "viz-20", render("viz-20", P), T)
 
 
-def s22():
-    k = 22
+def s21():
+    k = 21
     clear(k, "Move anywhere, any time")
     P, T = [], []
     P.append(rect(104, 404, 560, 412, TINT, VIOLET, 2))
@@ -186,8 +186,8 @@ def s22():
     place(k, f"viz-{k}", render(f"viz-{k}", P), T)
 
 
-def s13():
-    k = 13
+def s12():
+    k = 12
     clear(k, "From source and from upstream")
     P, T = [], []
     bh, sx, sw_ = 116, 1120, 692
@@ -213,11 +213,11 @@ def s13():
     P.append(rect(sx + 16, 648, sw_ - 32, 144, VIOLET))
     T.append(("Configured by hand", sx + 44, 672, sw_ - 88, "label22w"))
     T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 44, 708, sw_ - 88, "desc20w"))
-    place(k, "viz-13", render("viz-13", P), T)
+    place(k, "viz-12", render("viz-12", P), T)
 
 
-def s17():
-    k = 17
+def s16():
+    k = 16
     clear(k, "Self-hosting needs standards too")
     P, T = [], []
     bh = 108
@@ -258,21 +258,21 @@ def code_lines(k, x, y, lines, size=26, step=40):
         n.osa(f'tell application "Keynote" to tell slide {k} of document {D}\n  ' + "\n  ".join(cmds) + "\nend tell")
 
 
-def s14():
-    k = 14
+def s13():
+    k = 13
     d = n.dump(k)
     assert d[0]["text"] == "The package broke, source kept running", d[0]["text"]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
   repeat with i from (count of images) to 1 by -1
     set fn to file name of image i
-    if fn starts with "code-" or fn starts with "viz-14" then delete image i
+    if fn starts with "code-" or fn starts with "viz-13" then delete image i
   end repeat
   repeat with i from (count of text items) to 1 by -1
     if font of object text of text item i is "GeistMono-Regular" then delete text item i
   end repeat
 end tell''')
     P = [rect(108, 433, 819, 132, "#1B0B38"), rect(993, 433, 819, 252, "#1B0B38")]
-    place(k, "viz-14", render("viz-14", P), [])
+    place(k, "viz-13", render("viz-13", P), [])
     left = [[("nginx", "func"), (" ", "text"), ("-v", "key")],
             [("nginx", "func"), (" ", "text"), ("-V", "key"), (" ", "text"), ("2", "num"), (">&", "punct"), ("1", "num"),
              (" ", "text"), ("|", "punct"), (" ", "text"), ("grep", "func"), (" ", "text"), ("configure", "str")]]
