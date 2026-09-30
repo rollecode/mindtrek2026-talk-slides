@@ -197,7 +197,7 @@ def s14():
                                           (740, "cube", "Docker", "For some services, where it fits.")], (560, 600, 640)):
         box(P, T, 104, cy - bh // 2, 500, bh, ic, label, desc)
         P.append(line(618, cy, 726, ty))
-    box(P, T, 740, 515, 420, 170, "check-circle", "One standard", "Several ways to do it, each one agreed on.", 2,
+    box(P, T, 740, 515, 420, 170, "check-circle", "One standard", "Same rules for every\u2028kind of setup.", 2,
         fill=TINT, stroke=VIOLET)
     P.append(line(1174, 600, 1266, 600))
     box(P, T, 1280, 515, 532, 170, "book-open-text", "Written down", "Servers and code are both documented.", 2,
