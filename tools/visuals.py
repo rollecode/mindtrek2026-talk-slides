@@ -206,13 +206,13 @@ def s12():
     P.append(rect(sx, 392, sw_, 416, TINT, VIOLET, 2))
     P.append(icon("hard-drives", sx + 28, 420, 44))
     T.append(("Our server", sx + 94, 425, 400, "label22"))
-    for j, chip in enumerate(["nginx and modules", "PHP", "MariaDB", "Distribution packages"]):
-        cx, cy2 = sx + 28 + (j % 2) * 326, 488 + (j // 2) * 68
+    for j, chip in enumerate(["nginx and modules", "PHP", "MariaDB", "Distribution packages", "Applications", "FOSS"]):
+        cx, cy2 = sx + 28 + (j % 2) * 326, 484 + (j // 2) * 64
         P.append(rect(cx, cy2, 310, 52, PANEL, RULE, 2))
         T.append((chip, cx + 20, cy2 + 10, 280, "chip"))
-    P.append(rect(sx + 16, 648, sw_ - 32, 144, VIOLET))
-    T.append(("Configured by hand", sx + 44, 672, sw_ - 88, "label22w"))
-    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 44, 708, sw_ - 88, "desc20w"))
+    P.append(rect(sx + 16, 684, sw_ - 32, 108, VIOLET))
+    T.append(("Configured by hand", sx + 44, 696, sw_ - 88, "label22w"))
+    T.append(("Every configuration file is ours,\u2028with our own defaults.", sx + 44, 730, sw_ - 88, "desc20w"))
     place(k, "viz-12", render("viz-12", P), T)
 
 
