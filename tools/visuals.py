@@ -261,7 +261,7 @@ def code_lines(k, x, y, lines, size=26, step=40):
 def s13():
     k = 13
     d = n.dump(k)
-    assert d[0]["text"] == "When a layer breaks", d[0]["text"]
+    assert d[0]["text"] == "When Ubuntu's nginx crashed", d[0]["text"]
     n.osa(f'''tell application "Keynote" to tell slide {k} of document {n.q(n.DOC)}
   repeat with i from (count of images) to 1 by -1
     set fn to file name of image i
