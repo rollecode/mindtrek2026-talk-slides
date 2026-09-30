@@ -130,7 +130,7 @@ def s11():
     T.append(("Linux", xs[2] + 16, 679, cw - 32, "chipw"))
     for j, (name, ic) in enumerate([("Analytics", "chart-line"), ("Docs", "files"), ("CRM", "address-book")]):
         box(P, T, xs[3], 390 + j * 112, cw, 92, ic, name, fill=TINT, stroke=VIOLET)
-    cells = [("About 30 servers", "Ubuntu on almost all of them."),
+    cells = [("Dozens of clusters", "Self hosted Linux and virtualization."),
              ("14 people", "A web agency with its own sysop team."),
              ("One stack per server", "All on the same machine."),
              ("Own your services", "Analytics, docs and CRM run on our own servers.")]
