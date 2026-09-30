@@ -36,8 +36,8 @@ def s10():
              ("2016", "buildings", "In France", "2 web, 2 database and 1 file server."),
              ("2016", "lightning", "The outage", "Every client site hangs."),
              ("2016", "truck", "The move", "Every site moved to a local data center in Finland."),
-             ("2016-2026", "mountains", "The rock cave", "A datacentre in a former army rock cave, on wind power."),
-             ("2026", "map-pin", "One provider", "Moving it all to\u2028one Finnish provider.")]
+             ("Since 2016", "mountains", "The rock cave", "A datacentre in a\u2028former army rock\u2028cave, on wind power."),
+             ("2026", "map-pin", "Today", "Still on European\u2028servers, free to\u2028move again.")]
     col, ly = 290, 620
     xs = [104 + j * col for j in range(6)]
     P.append(line(104, ly, 1812, ly, VIOLET, 4, head=False))
