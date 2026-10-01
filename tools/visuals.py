@@ -33,19 +33,19 @@ def s10():
     clear(k, "Choosing providers, and leaving them")
     P, T = [], []
     stops = [("2015", "cloud", "A US cloud", "The first VPS."),
-             ("2016", "buildings", "In France", "2 web, 2 database and 1 file server."),
-             ("2016", "lightning", "The outage", "Every client site hangs."),
-             ("2016", "truck", "The move", "Every site moved to a local data center in Finland."),
+             ("2016", "buildings", "In France", "2 web, 2 database\u2028and 1 file server."),
+             ("2016", "lightning", "The outage", "Every client\u2028site hangs."),
+             ("2016", "truck", "The move", "Every site moved\u2028to a local data\u2028center in Finland."),
              ("Since 2016", "mountains", "The rock cave", "A datacentre in a\u2028former army rock\u2028cave, on wind power."),
-             ("2026", "map-pin", "Today", "Still on European\u2028servers, free to\u2028move again.")]
+             ("2026", "map-pin", "Today", "Still on European\u2028servers, data on sovereign ground.")]
     col, ly = 290, 620
     xs = [104 + j * col for j in range(6)]
     P.append(line(104, ly, 1812, ly, VIOLET, 4, head=False))
     P.append(path(f"M{xs[2] + 14},{ly - 24} C{xs[2] + 110},{ly - 70} {xs[3] - 110},{ly - 70} {xs[3] - 12},{ly - 26}", VIOLET, 3, "8 7"))
     for j, (yr, ic, label, desc) in enumerate(stops):
         x = xs[j]
-        P.append(icon(ic, x - 2, 448, 44, INK if j == 2 else VIOLET))
-        P.append(circle(x + 11, ly, 12, PANEL if j == 2 else VIOLET, INK if j == 2 else None, 4))
+        P.append(icon(ic, x - 2, 448, 44))
+        P.append(circle(x + 11, ly, 12))
         T.append((yr, x - 4, 516, col - 20, "year"))
         T.append((label, x - 4, 660, col - 20, "node"))
         T.append((desc, x - 4, 702, col - 40, "small"))

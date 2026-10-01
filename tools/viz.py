@@ -5,7 +5,7 @@ import newsection as n
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "keyassets", "viz")
-PH = "/private/tmp/claude-501/-Users-rolle-Projects-keynote-base/c26984b9-15ab-4610-9987-b4f97c97e0e0/scratchpad/ph/package/assets"
+PH = os.path.join(HERE, "phosphor")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 INK, VIOLET, BODY, MUTED = "#190834", "#4C1D95", "#2E1B34", "#8A7BA8"

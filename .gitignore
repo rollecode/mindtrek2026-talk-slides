@@ -3,3 +3,4 @@ __pycache__/
 *(backup).key
 /index.html
 build-key.applescript
+tools/phosphor/
