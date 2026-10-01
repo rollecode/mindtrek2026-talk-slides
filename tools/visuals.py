@@ -276,7 +276,7 @@ def s22():
         for j, tip in enumerate(tips):
             y = 520 + j * 124
             T.append((str(num), x, y + 3, 60, "tipnum"))
-            T.append((tip, x + 64, y, 760, "tip30"))
+            T.append((tip, x + 64, y, 740, "tip30"))
             num += 1
     P.append(line(972, 380, 972, 860, RULE, 2, head=False))
     place(k, "viz-22", render("viz-22", P), T)
